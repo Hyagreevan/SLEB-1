@@ -1,0 +1,5 @@
+﻿"Quotation ID","Date","Customer Name","Customer Phone","Customer Address","Tax Mode","Quoted Model particulars","Total Qty","Sub Total Base (INR)","Total CGST (INR)","Total SGST (INR)","Total IGST (INR)","Grand Total (INR)"
+"QT-0001","2026-05-31","ASFDS","7825971917","ADF","intrastate","ADMS RIDER (60V 26AH) (x1)","1","63809.52","1595.24","1595.24","0","67000"
+"QT-0002","2026-05-23","ask","7825971917","sdfgh","intrastate","ADMS RIDER (x1)","1","63809.52","1595.24","1595.24","0","67000"
+"QT-0003","2026-05-31","ASE","7825971917","SB","intrastate","ADMS RIDER (60V 26AH) (x1)","1","63809.52","1595.24","1595.24","0","67000"
+"QT-0004","2026-05-31","SKY","7825971917","ADF","intrastate","ADMS RIDER (60V 26AH) (x1)","1","63809.52","1595.24","1595.24","0","67000"

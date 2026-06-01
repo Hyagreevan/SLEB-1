@@ -1,0 +1,2678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Lakshmi e Bikes - H BILLING SYSTEMS & Service Center Suite</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- html2pdf.js local library for dynamic high-fidelity PDF invoice printing (offline independent) -->
+  <script src="html2pdf.bundle.min.js"></script>
+  <!-- SheetJS library for parsing binary Excel files and CSVs (offline independent) -->
+  <script src="xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <!-- ==================== HIGH-FIDELITY SPLASH SCREEN OVERLAY ==================== -->
+  <div id="splash-screen">
+    <div class="splash-content">
+      <!-- Rotating Glowing Concentric Neon Rings Logo -->
+      <div class="splash-logo-wrapper">
+        <div class="logo-ring outer-ring"></div>
+        <div class="logo-ring inner-ring"></div>
+        <div class="splash-logo">SL</div>
+      </div>
+      
+      <!-- Animated Legal App Title -->
+      <h1 class="splash-app-name" id="splash-app-title">SRI LAKSHMI e BIKES</h1>
+      <p class="splash-tagline">ADMS E-BIKES AUTHORISED DEALERSHIP</p>
+      
+      <!-- Skip / Interaction Action Button -->
+      <button class="splash-btn" onclick="startAppWithAudio()">
+        <span>
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          ⚡ ENTER ER-PORTAL ⚡
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand-section">
+        <div class="brand-logo">SL</div>
+        <div class="brand-info">
+          <h2 id="sidebar-brand-name">Sri Lakshmi e Bikes</h2>
+          <p id="sidebar-brand-sub">H BILLING SYSTEMS</p>
+        </div>
+      </div>
+      
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a class="nav-link active" id="nav-dashboard-link" onclick="switchTab('dashboard-tab')">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.25;"><path d="M4 5a1 1 0 011-1h4a1 1 0 011 1v5a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 14a1 1 0 011-1h4a1 1 0 011 1v5a1 1 0 01-1 1H5a1 1 0 01-1-1v-5zm10 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z"/></svg>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchTab('new-billing-tab')">
+            <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span>New Billing</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchTab('sales-details-tab')">
+            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            <span>Sales History</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchTab('purchase-details-tab')">
+            <svg viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span>Purchases</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchTab('stock-details-tab')">
+            <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            <span>E-Bike Stock</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchTab('spares-tab')">
+            <svg viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg>
+            <span>Spares Inventory</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-spares-history-link" onclick="switchTab('spares-history-tab')">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.25;"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Spares History</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchTab('services-tab')">
+            <svg viewBox="0 0 24 24"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+            <span>Services Registry</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchTab('settings-tab')">
+            <svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011-1v5m-4 0h4"/></svg>
+            <span>Showroom Profile</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-invoice-link" onclick="switchTab('invoice-printer-tab')">
+            <svg viewBox="0 0 24 24"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4"/></svg>
+            <span>Invoice Printer</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-agreement-link" onclick="switchTab('warranty-agreement-tab')">
+            <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2zM12 11h.01M12 7h.01M9 11h.01M12 14h.01M15 11h.01"/></svg>
+            <span>Warranty Agreement</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-quotation-link" onclick="switchTab('quotation-tab')">
+            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.25;"><path d="M7 8h10M7 12h10M7 16h6M4 4h16v16H4z"/></svg>
+            <span>Quotation Manager</span>
+          </a>
+        </li>
+      </ul>
+      
+      <div class="sidebar-footer" style="padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; border-top: 1px solid var(--border-glass);">
+        <!-- Theme Toggle Wrapper -->
+        <div style="display: flex; flex-direction: column; gap: 0.25rem; text-align: left;">
+          <label style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">UI Theme Mode</label>
+          <select id="theme-selector" onchange="applyUITheme(this.value)" style="background: var(--bg-input); border: 1px solid var(--border-input); color: var(--text-main); font-size: 0.8rem; padding: 0.35rem 0.5rem; border-radius: 4px; width: 100%; cursor: pointer;">
+            <option value="dark">🌙 Dark Mode</option>
+            <option value="light">☀️ Light Mode</option>
+            <option value="system">💻 System Default</option>
+          </select>
+        </div>
+        <!-- Background Auto-Backup Status Indicator -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.35rem; font-size: 0.72rem; font-weight: 600;">
+          <span id="backup-status-indicator" style="color: #ff007f; transition: color 0.3s ease;">○ Local Mode</span>
+        </div>
+        <p style="margin: 0; font-size: 0.72rem; opacity: 0.7;">&copy; 2026 Sri Lakshmi e Bikes</p>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      
+      <!-- ==================== TAB 0: DASHBOARD ==================== -->
+      <section id="dashboard-tab" class="tab-section active">
+        <header class="content-header" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+          <div style="text-align: left;">
+            <h1>Sri Lakshmi e-Bikes Dashboard</h1>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Real-time dynamic business reports, sales analysis, spares status, and expense ledgers.</p>
+          </div>
+          <button class="btn btn-secondary" onclick="refreshAllViews(); alert('All dashboard stats and tab views refreshed successfully from current database!');" style="width: auto; height: 38px; font-size: 0.8rem; font-weight: 700; padding: 0 1rem; border-color: #00f0ff; color: #00f0ff; background: rgba(0, 240, 255, 0.05); display: flex; align-items: center; gap: 6px; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.25s ease;">
+            <svg viewBox="0 0 24 24" style="width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2.5;"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            <span>Refresh All Views</span>
+          </button>
+        </header>
+
+        <!-- Dashboard Interactive Filter Switcher -->
+        <article class="glass-card" style="margin-bottom: 2rem; padding: 1rem; border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,240,255,0.1);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <span class="pulse-indicator" style="background:var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan-glow);"></span>
+              <strong style="font-family:var(--font-heading); font-size:0.95rem; text-shadow:0 0 5px rgba(0,240,255,0.2);">Interactive Report Filter</strong>
+            </div>
+            <div class="switch-container" style="margin-bottom: 0; border:1px solid rgba(0,240,255,0.15); box-shadow: 0 0 8px rgba(0,240,255,0.05);">
+              <div class="switch-option active" id="dash-filt-all" onclick="setDashboardFilter('all')" style="font-weight:700; font-size:0.8rem; padding: 0.45rem 1rem;">☀️ Show All Statistics</div>
+              <div class="switch-option" id="dash-filt-bike" onclick="setDashboardFilter('bike')" style="font-weight:700; font-size:0.8rem; padding: 0.45rem 1rem;">🏍️ E-Bikes Ledger Only</div>
+              <div class="switch-option" id="dash-filt-spares" onclick="setDashboardFilter('spares')" style="font-weight:700; font-size:0.8rem; padding: 0.45rem 1rem;">⚙️ Spares &amp; Services Only</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- KPI Cards Grid -->
+        <div class="grid-4" style="margin-bottom: 2rem;">
+          <article class="glass-card metric-card interactive-kpi" onclick="openDashboardDetail('sales')" style="border-left: 4px solid var(--neon-cyan); cursor: pointer;">
+            <div class="metric-header">
+              <span class="metric-label">Sales Revenue</span>
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; stroke: var(--neon-cyan); fill: none; stroke-width: 2; filter: drop-shadow(0 0 5px var(--neon-cyan-glow));"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h2 class="metric-val text-neon-cyan" id="dash-sales-total">₹ 0.00</h2>
+            <p class="metric-desc" id="dash-sales-count">0 Invoices &amp; Quotations</p>
+            <div class="kpi-hover-action" style="font-size:0.7rem; color:var(--neon-cyan); font-weight:700; margin-top:0.5rem; text-align:right; text-shadow:0 0 5px rgba(0,240,255,0.2);">Explore Statistics ➔</div>
+          </article>
+
+          <article class="glass-card metric-card interactive-kpi" onclick="openDashboardDetail('purchases')" style="border-left: 4px solid var(--neon-pink); cursor: pointer;">
+            <div class="metric-header">
+              <span class="metric-label">Purchases Outflow</span>
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; stroke: var(--neon-pink); fill: none; stroke-width: 2; filter: drop-shadow(0 0 5px var(--neon-pink-glow));"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            </div>
+            <h2 class="metric-val text-neon-pink" id="dash-purchases-total">₹ 0.00</h2>
+            <p class="metric-desc" id="dash-purchases-count">0 Vehicles Logged</p>
+            <div class="kpi-hover-action" style="font-size:0.7rem; color:var(--neon-pink); font-weight:700; margin-top:0.5rem; text-align:right; text-shadow:0 0 5px rgba(255,0,127,0.2);">Explore Statistics ➔</div>
+          </article>
+
+          <article class="glass-card metric-card interactive-kpi" onclick="openDashboardDetail('stock')" style="border-left: 4px solid var(--neon-lime); cursor: pointer;">
+            <div class="metric-header">
+              <span class="metric-label">E-Bike Inventory</span>
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; stroke: var(--neon-lime); fill: none; stroke-width: 2; filter: drop-shadow(0 0 5px var(--neon-lime-glow));"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            </div>
+            <h2 class="metric-val text-neon-lime" id="dash-stock-total">0 Units</h2>
+            <p class="metric-desc" id="dash-stock-status">0 STOCK | 0 SOLD</p>
+            <div class="kpi-hover-action" style="font-size:0.7rem; color:var(--neon-lime); font-weight:700; margin-top:0.5rem; text-align:right; text-shadow:0 0 5px rgba(57,255,20,0.2);">Explore Statistics ➔</div>
+          </article>
+
+          <article class="glass-card metric-card interactive-kpi" onclick="openDashboardDetail('services')" style="border-left: 4px solid var(--neon-purple); cursor: pointer;">
+            <div class="metric-header">
+              <span class="metric-label">Spares &amp; Services</span>
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; stroke: var(--neon-purple); fill: none; stroke-width: 2; filter: drop-shadow(0 0 5px var(--neon-purple-glow));"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg>
+            </div>
+            <h2 class="metric-val text-neon-purple" id="dash-services-total">₹ 0.00</h2>
+            <p class="metric-desc" id="dash-services-breakdown">Spares: ₹0 | Labor: ₹0</p>
+            <div class="kpi-hover-action" style="font-size:0.7rem; color:var(--neon-purple); font-weight:700; margin-top:0.5rem; text-align:right; text-shadow:0 0 5px rgba(189,0,255,0.2);">Explore Statistics ➔</div>
+          </article>
+        </div>
+
+        <!-- Charts & Ratios Card Grid -->
+        <div class="grid-2" style="margin-bottom: 2rem;">
+          <article class="glass-card" style="min-height: 280px;">
+            <h3 class="card-title">Business Cash Flow Ratio</h3>
+            <div id="dash-ratio-container" style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:220px; padding:1rem;">
+              <!-- Dynamic SVG Chart rendered here -->
+            </div>
+          </article>
+          
+          <article class="glass-card" style="min-height: 280px;">
+            <h3 class="card-title">Top E-Bike Models Distribution</h3>
+            <div id="dash-stock-container" style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:220px; padding:1rem;">
+              <!-- Dynamic SVG Chart rendered here -->
+            </div>
+          </article>
+        </div>
+
+        <!-- Business Revenue Trend (Full Width Area Chart) -->
+        <article class="glass-card" style="margin-bottom: 2rem; min-height: 320px;">
+          <h3 class="card-title" style="display:flex; align-items:center; gap:0.5rem; margin-bottom: 0.5rem; border: none; padding: 0;">
+            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: var(--color-primary); stroke-width: 2.5; filter: drop-shadow(0 0 5px var(--neon-cyan-glow));"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            Business Revenue Growth Trend
+          </h3>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">Interactive sales growth and monthly invoicing volume statistics ledger.</p>
+          <div id="dash-trend-container" style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:240px; padding:1rem;">
+            <!-- Dynamic SVG Area Chart rendered here -->
+          </div>
+        </article>
+
+        <!-- Supplier Expenditure Summary Table -->
+        <article class="glass-card" style="margin-bottom: 2rem;">
+          <h3 class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              Supplier Expenses Report
+            </span>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary" onclick="exportDashboardToExcel()" style="width: auto; height: 32px; font-size: 0.75rem; padding: 0 0.85rem; border-color: var(--color-primary);">
+                Export Excel
+              </button>
+              <button class="btn btn-secondary" onclick="exportDashboardToPDF()" style="width: auto; height: 32px; font-size: 0.75rem; padding: 0 0.85rem; border-color: var(--color-accent);">
+                Export PDF
+              </button>
+            </div>
+          </h3>
+          
+          <div class="table-container">
+            <table class="data-table" id="dashboard-supplier-expenses-table">
+              <thead>
+                <tr>
+                  <th>Supplier Name</th>
+                  <th>Bill / Invoice No</th>
+                  <th style="text-align: center;">Vehicles Logged</th>
+                  <th style="text-align: right;">Total Purchases Paid (₹)</th>
+                  <th style="text-align: right;">Total Vehicle GST Paid (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="dashboard-supplier-expenses-tbody">
+                <!-- Populated dynamically in app.js -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- ==================== TAB 1: NEW BILLING ==================== -->
+      <section id="new-billing-tab" class="tab-section">
+        <header class="content-header">
+          <h1>New Billing Transaction</h1>
+          <p>Create GST Tax Invoices and Price Estimations dynamically.</p>
+        </header>
+
+        <div class="billing-layout">
+          <!-- Left Forms Column -->
+          <div class="billing-forms-column">
+            
+            <!-- Category Switcher -->
+            <article class="glass-card" style="margin-bottom: 2rem; padding: 1.25rem;">
+              <label>Billing Category</label>
+              <div class="switch-container" style="margin-bottom: 0;">
+                <div class="switch-option active" id="bill-cat-bike" onclick="setBillingCategory('bike')">E-Bike Sale</div>
+                <div class="switch-option" id="bill-cat-spares" onclick="setBillingCategory('spares')">Spares & Services</div>
+              </div>
+            </article>
+
+            <!-- Customer Details Card -->
+            <article class="glass-card form-group" style="margin-bottom: 2rem;">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                Consignee / Buyer Details
+              </h3>
+              <div class="grid-2">
+                <div class="form-group">
+                  <label for="bill-invoice-no">Invoice / Quotation No *</label>
+                  <input type="text" id="bill-invoice-no" placeholder="Auto-generated Invoice No" required>
+                </div>
+                <div class="form-group">
+                  <label for="bill-date">Invoice Date *</label>
+                  <input type="date" id="bill-date" required>
+                </div>
+                <div class="form-group">
+                  <label for="cust-name">Buyer Name *</label>
+                  <input type="text" id="cust-name" placeholder="Enter buyer's name / business name" required>
+                </div>
+                <div class="form-group">
+                  <label for="cust-phone">Mobile Number *</label>
+                  <input type="tel" id="cust-phone" placeholder="10-digit mobile" required>
+                </div>
+                <div class="form-group">
+                  <label for="cust-email">Email ID (Optional)</label>
+                  <input type="text" id="cust-email" placeholder="Buyer's email address">
+                </div>
+                <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem; grid-column: span 2; margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <input type="checkbox" id="toggle-gstin" onchange="toggleGstinField(this.checked)" style="width: 16px; height: 16px; cursor: pointer;">
+                  <label for="toggle-gstin" style="margin-bottom: 0; cursor: pointer; text-transform: none; color: var(--text-main); font-weight: 500;">Add Customer GSTIN</label>
+                </div>
+                <div class="form-group full-width" id="gstin-input-wrapper" style="display: none;">
+                  <label for="cust-gstin">Buyer GSTIN *</label>
+                  <input type="text" id="cust-gstin" placeholder="Buyer's 15-digit GSTIN">
+                </div>
+                <div class="form-group">
+                  <label for="cust-ref-no">Reference No / State</label>
+                  <input type="text" id="cust-ref-no" placeholder="e.g. NON REG / REG" value="NON REG">
+                </div>
+                <div class="form-group full-width">
+                  <label for="cust-address">Buyer Address *</label>
+                  <textarea id="cust-address" placeholder="Enter complete address, state, and pincode" rows="3" required></textarea>
+                </div>
+                
+                <!-- Billing Details Display Toggles inside New Billing Page -->
+                <div class="form-group full-width" style="border-top: 1px dashed var(--border-glass); padding-top: 1rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                  <label style="margin-bottom: 0.25rem; font-size: 0.8rem; color: var(--color-primary); text-transform: none; font-weight: 700; letter-spacing: 0.5px;">Include in Print Receipt:</label>
+                  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main); font-size: 0.8rem; font-weight: 500;">
+                      <input type="checkbox" id="toggle-print-address" checked style="width: 16px; height: 16px; cursor: pointer;"> Buyer Address
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main); font-size: 0.8rem; font-weight: 500;">
+                      <input type="checkbox" id="toggle-print-phone" checked style="width: 16px; height: 16px; cursor: pointer;"> Phone Number
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main); font-size: 0.8rem; font-weight: 500;">
+                      <input type="checkbox" id="toggle-print-gstin" checked style="width: 16px; height: 16px; cursor: pointer;"> GSTIN (if entered)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main); font-size: 0.8rem; font-weight: 500;">
+                      <input type="checkbox" id="toggle-print-email" checked style="width: 16px; height: 16px; cursor: pointer;"> Email (if entered)
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Mode 1: E-Bike Selection Card -->
+            <article class="glass-card" id="billing-bike-panel">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zm10 0a2 2 0 11-4 0 2 2 0 014 0zm-2-4h-8.5l-1-2.5h10.5L17 13zm-8.5-2.5L7 5H3.5"/></svg>
+                Select E-Bike
+              </h3>
+              <div class="grid-2">
+                <div class="form-group full-width">
+                  <label for="vehicle-select">Select E-Bike from STOCK *</label>
+                  <select id="vehicle-select" onchange="onVehicleChange(this.value)">
+                    <!-- Loaded dynamically -->
+                  </select>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                  <div class="form-group" style="margin-bottom:0;">
+                    <label for="bill-payment-type">Payment Type</label>
+                    <select id="bill-payment-type">
+                      <option value="CASH">CASH</option>
+                      <option value="BANK TRANSFER">BANK TRANSFER</option>
+                      <option value="FINANCE">FINANCE</option>
+                      <option value="UPI">UPI</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="margin-bottom:0;">
+                    <label for="bill-qty">Quantity</label>
+                    <input type="number" id="bill-qty" value="1" readonly disabled>
+                  </div>
+                </div>
+                <div id="id-details-placeholder-bike">
+                  <!-- Dynamically appended single #id-details-container -->
+                  <div id="id-details-container" class="glass-card" style="padding: 0.85rem; background: var(--bg-table-responsive); border-color: var(--border-input); width: 100%;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                      <label style="margin-bottom:0; font-size:0.75rem; text-transform:none; color:var(--text-main); font-weight: 600;">Add ID Number Details</label>
+                      <input type="checkbox" id="toggle-id-details" onchange="toggleIdDetailsField(this.checked)" style="width:16px; height:16px; cursor:pointer;">
+                    </div>
+                    <div id="id-details-fields" style="display:none; flex-direction:column; gap:0.6rem; margin-top:0.5rem;">
+                      <div class="form-group" style="margin-bottom:0;">
+                        <label for="bill-id-no" style="font-size:0.7rem;">ID Number (Optional)</label>
+                        <input type="text" id="bill-id-no" placeholder="e.g. REG-1234 / Aadhar">
+                      </div>
+                      <div class="form-group" style="margin-bottom:0;">
+                        <label for="bill-id-cost" style="font-size:0.7rem;">ID Purchase Cost (₹)</label>
+                        <input type="number" id="bill-id-cost" placeholder="0.00" value="0" min="0" step="0.01" onkeyup="recalculateInvoiceAmounts()">
+                      </div>
+                      <div class="form-group" style="margin-bottom:0;">
+                        <label for="bill-id-treatment" style="font-size:0.7rem;">Cost Treatment</label>
+                        <select id="bill-id-treatment" onchange="recalculateInvoiceAmounts()" style="padding: 0.4rem 0.75rem;">
+                          <option value="add">Add to Grand Total</option>
+                          <option value="subtract">Subtract from Grand Total</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="specs-block" class="specs-grid" style="display: none; margin-top: 1.5rem;">
+                <div class="spec-item">
+                  <span class="spec-label">Model Name</span>
+                  <span id="spec-model" class="spec-value">-</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">HSN/SAC Code</span>
+                  <span id="spec-hsn" class="spec-value">-</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Chassis Number</span>
+                  <span id="spec-chassis" class="spec-value">-</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Motor Number</span>
+                  <span id="spec-motor" class="spec-value">-</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Battery Serial</span>
+                  <span id="spec-battery" class="spec-value">-</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Charger Serial</span>
+                  <span id="spec-charger" class="spec-value">-</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Mode 2: Spares & Services Item Selector Card -->
+            <article class="glass-card" id="billing-spares-panel" style="display: none;">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                Spares & Service Billing Grid
+              </h3>
+              
+              <div class="grid-2" style="margin-bottom: 1rem;">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label for="bill-payment-type-spares">Payment Type</label>
+                  <select id="bill-payment-type-spares">
+                    <option value="CASH">CASH</option>
+                    <option value="BANK TRANSFER">BANK TRANSFER</option>
+                    <option value="UPI">UPI</option>
+                  </select>
+                </div>
+                <div id="id-details-placeholder-spares">
+                  <!-- Dynamically appended single #id-details-container -->
+                </div>
+              </div>
+
+              <!-- Add Spare Item Sub-Form -->
+              <div class="specs-grid" style="grid-template-columns: 2fr 1fr 1fr; margin-bottom: 1.5rem;">
+                <div class="spec-item">
+                  <label for="spares-item-select">Select Spare Part</label>
+                  <select id="spares-item-select">
+                    <!-- Dynamically loaded spares -->
+                  </select>
+                </div>
+                <div class="spec-item">
+                  <label for="spares-item-qty">Quantity</label>
+                  <input type="number" id="spares-item-qty" min="1" value="1">
+                </div>
+                <div class="spec-item" style="justify-content: flex-end;">
+                  <button type="button" class="btn btn-primary" style="height: 42px; font-size: 0.85rem;" onclick="addSpareToBillList()">
+                    Add Item
+                  </button>
+                </div>
+              </div>
+
+              <!-- Spares Billable List Grid -->
+              <div class="table-responsive" style="margin-bottom: 1.5rem;">
+                <table class="data-table" id="spares-bill-table" style="min-width: 100%;">
+                  <thead>
+                    <tr>
+                      <th>Part Name</th>
+                      <th style="text-align: center;">Qty</th>
+                      <th style="text-align: right;">Rate</th>
+                      <th style="text-align: right;">Amount</th>
+                      <th style="text-align: center;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="spares-bill-tbody">
+                    <tr><td colspan="5" style="text-align:center; color:var(--text-muted);">No spares added to bill.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Labor / Service Charges -->
+              <div class="grid-2">
+                <div class="form-group">
+                  <label for="bill-labor-hsn">Labor HSN/SAC Code</label>
+                  <input type="text" id="bill-labor-hsn" value="998729" required>
+                </div>
+                <div class="form-group">
+                  <label for="bill-labor-charge">Labor/Service Charges (₹)</label>
+                  <input type="number" id="bill-labor-charge" min="0" placeholder="0.00" value="0" onkeyup="if(typeof updateOverrideInputToProductBasePrice === 'function') updateOverrideInputToProductBasePrice(); recalculateInvoiceAmounts()">
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Right Column (Billing Review Card) -->
+          <div class="billing-summary-column">
+            <article class="glass-card highlight" style="position: sticky; top: 2.5rem;">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 11h.01M12 7h.01M9 11h.01M12 14h.01M15 11h.01M15 7h.01M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/></svg>
+                Billing Review
+              </h3>
+              
+              <!-- switches -->
+              <label>Document Class</label>
+              <div class="switch-container">
+                <div class="switch-option active" id="mode-invoice" onclick="setDocMode('invoice')">Tax Invoice</div>
+                <div class="switch-option" id="mode-quotation" onclick="setDocMode('quotation')">Quotation</div>
+              </div>
+
+              <label>GST Treatment</label>
+              <div class="switch-container">
+                <div class="switch-option active" id="tax-intra" onclick="setTaxMode('intrastate')">Intrastate (CGST+SGST)</div>
+                <div class="switch-option" id="tax-inter" onclick="setTaxMode('interstate')">Interstate (IGST)</div>
+              </div>
+
+              <!-- Previous Outstanding Balance Block (Optional Merger Checklist) -->
+              <div class="glass-card" id="prev-outstanding-block" style="display: none; padding: 0.85rem; margin-bottom: 1.25rem; background: hsla(0, 85%, 50%, 0.05); border-color: hsla(0, 85%, 60%, 0.25);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                  <div style="display:flex; flex-direction:column; gap:0.15rem;">
+                    <label style="margin-bottom:0; font-size:0.75rem; text-transform:none; color:var(--text-main); font-weight:600;">Merge Previous Overdue</label>
+                    <span style="font-size:0.75rem; color:hsl(0, 85%, 70%); font-weight:700;" id="prev-outstanding-amount-label">₹ 0.00</span>
+                  </div>
+                  <input type="checkbox" id="toggle-prev-outstanding" onchange="recalculateInvoiceAmounts()" style="width:16px; height:16px; cursor:pointer;">
+                </div>
+              </div>
+
+              <!-- Grand Total Custom Override! -->
+              <div class="glass-card" style="padding: 0.85rem; margin-bottom: 1.25rem; background: var(--bg-table-responsive); border-color: var(--border-input);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                  <label style="margin-bottom:0; font-size:0.75rem;">Manual Grand Total Override</label>
+                  <input type="checkbox" id="override-toggle" onchange="toggleOverrideTotal(this.checked)" style="width:16px; height:16px; cursor:pointer;">
+                </div>
+                <input type="number" id="override-total-input" placeholder="Enter custom Grand Total" step="0.01" min="0" style="display:none;" onkeyup="onOverrideTotalChange()">
+              </div>
+
+              <!-- Print Bank Account details checkbox in billing page itself -->
+              <div class="glass-card" style="padding: 0.85rem; margin-bottom: 1.25rem; background: var(--bg-table-responsive); border-color: var(--border-input);">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <label style="margin-bottom:0; font-size:0.75rem; text-transform:none; color:var(--text-main); font-weight: 600;">Print Bank Account Details</label>
+                  <input type="checkbox" id="bill-print-bank" checked onchange="togglePrintBankDetails(this.checked)" style="width:16px; height:16px; cursor:pointer;">
+                </div>
+              </div>
+
+              <!-- Print Balance Due checkbox in billing page itself -->
+              <div class="glass-card" style="padding: 0.85rem; margin-bottom: 1.25rem; background: var(--bg-table-responsive); border-color: var(--border-input);">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <label style="margin-bottom:0; font-size:0.75rem; text-transform:none; color:var(--text-main); font-weight: 600;">Print Balance Due</label>
+                  <input type="checkbox" id="bill-print-balance" checked onchange="togglePrintBalanceDue(this.checked)" style="width:16px; height:16px; cursor:pointer;">
+                </div>
+              </div>
+
+              <!-- Print Custom Notes and Custom Notes Textarea in billing page -->
+              <div class="glass-card" style="padding: 0.85rem; margin-bottom: 1.25rem; background: var(--bg-table-responsive); border-color: var(--border-input);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                  <label style="margin-bottom:0; font-size:0.75rem; text-transform:none; color:var(--text-main); font-weight: 600;">Print Custom Notes / Remarks</label>
+                  <input type="checkbox" id="bill-print-notes-toggle" onchange="togglePrintNotes(this.checked)" style="width:16px; height:16px; cursor:pointer;">
+                </div>
+                <textarea id="bill-notes-input" placeholder="Type custom notes / points to print on the invoice..." rows="2" style="display:none; width:100%; font-size:0.8rem; margin-top:0.5rem; padding:0.4rem; background:var(--bg-glass-input); color:var(--text-main); border:1px solid var(--border-glass); border-radius:4px; resize:vertical;"></textarea>
+              </div>
+
+              <div class="financial-summary">
+                <div class="summary-row">
+                  <span class="row-label">Base Rate</span>
+                  <span id="calc-base" class="row-value">₹ 0.00</span>
+                </div>
+                
+                <div id="sgst-cgst-block">
+                  <div class="summary-row">
+                    <span class="row-label" id="cgst-label-pct">CGST (2.5%)</span>
+                    <span id="calc-cgst" class="row-value">₹ 0.00</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="row-label" id="sgst-label-pct">SGST (2.5%)</span>
+                    <span id="calc-sgst" class="row-value">₹ 0.00</span>
+                  </div>
+                </div>
+
+                <div id="igst-block" style="display: none;">
+                  <div class="summary-row">
+                    <span class="row-label" id="igst-label-pct">IGST (5%)</span>
+                    <span id="calc-igst" class="row-value">₹ 0.00</span>
+                  </div>
+                </div>
+
+                <!-- ID Purchase Cost Adjustment -->
+                <div class="summary-row" id="id-cost-summary-row" style="display: none;">
+                  <span class="row-label" id="id-cost-summary-label">ID Purchase Cost (+)</span>
+                  <span id="calc-id-cost" class="row-value">₹ 0.00</span>
+                </div>
+
+                <!-- Merged Previous Overdue Row -->
+                <div class="summary-row" id="prev-overdue-summary-row" style="display: none;">
+                  <span class="row-label">Merged Previous Overdue</span>
+                  <span id="calc-prev-overdue" class="row-value">₹ 0.00</span>
+                </div>
+
+                <div class="summary-row total">
+                  <span class="row-label">Grand Total</span>
+                  <span id="calc-total" class="row-value">₹ 0.00</span>
+                </div>
+
+                <!-- Paid -->
+                <div class="form-group" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                  <label for="amount-paid">Amount Paid (₹)</label>
+                  <input type="number" id="amount-paid" step="0.01" min="0" placeholder="0.00" onkeyup="recalculateInvoiceAmounts()">
+                </div>
+
+                <div class="summary-row balance">
+                  <span class="row-label">Balance Due</span>
+                  <span id="calc-balance" class="row-value due">₹ 0.00</span>
+                </div>
+              </div>
+
+              <button id="process-btn" class="btn btn-primary" style="margin-top: 1.5rem;" onclick="processTransaction()">
+                <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M5 13l4 4L19 7"/></svg>
+                <span>Process Sale</span>
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 2: SALES DETAILS & BILL HISTORY ==================== -->
+      <section id="sales-details-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Sales Details & Bill History</h1>
+          <p>Review, edit, delete, and import all generated sales invoices and quotations.</p>
+        </header>
+
+        <!-- Dynamic Specs Card Expand Drawer (Slides Down dynamically when row is selected) -->
+        <article class="glass-card" id="sales-spec-details-panel" style="display: none; margin-bottom: 2rem; border-color: var(--color-primary);">
+          <h3 class="card-title" style="color: var(--color-primary);">
+            <svg viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zm10 0a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            Complete E-Bike Specifications & Profit Ledger
+          </h3>
+          <div class="grid-3" id="sales-details-grid-specs">
+            <!-- Populated dynamically in app.js -->
+          </div>
+          <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+            <button class="btn btn-secondary" onclick="closeSalesSpecPanel()" style="width: auto;">Close Details</button>
+          </div>
+        </article>
+
+        <!-- Edit Form Card (Initially Hidden) -->
+        <article class="glass-card" id="edit-transaction-panel" style="display: none; margin-bottom: 2rem; border-color: var(--color-secondary);">
+          <h3 class="card-title" style="color: var(--color-secondary);">
+            <svg viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            Edit Bill Details: <span id="edit-tx-id" style="font-family: monospace;">-</span>
+          </h3>
+          <form onsubmit="saveEditedTransaction(event)">
+            <input type="hidden" id="edit-tx-index">
+            <div class="grid-3">
+              <div class="form-group">
+                <label for="edit-cust-name">Buyer Name *</label>
+                <input type="text" id="edit-cust-name" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-cust-phone">Phone Number *</label>
+                <input type="tel" id="edit-cust-phone" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-cust-gstin">GSTIN</label>
+                <input type="text" id="edit-cust-gstin">
+              </div>
+              <div class="form-group">
+                <label for="edit-cust-email">Email ID</label>
+                <input type="text" id="edit-cust-email">
+              </div>
+              <div class="form-group">
+                <label for="edit-ref-no">Reference No</label>
+                <input type="text" id="edit-ref-no">
+              </div>
+              <div class="form-group">
+                <label for="edit-payment-type">Payment Type</label>
+                <select id="edit-payment-type">
+                  <option value="CASH">CASH</option>
+                  <option value="BANK TRANSFER">BANK TRANSFER</option>
+                  <option value="UPI">UPI</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="edit-amount-paid">Amount Paid (₹) *</label>
+                <input type="number" id="edit-amount-paid" step="0.01" min="0" required>
+              </div>
+              <div class="form-group full-width">
+                <label for="edit-cust-address">Buyer Address *</label>
+                <textarea id="edit-cust-address" rows="2" required></textarea>
+              </div>
+            </div>
+            
+            <!-- Edit Override Total checkbox -->
+            <div class="glass-card" style="padding: 0.85rem; margin-bottom: 1.25rem; background: var(--bg-table-responsive); border-color: var(--border-input); margin-top: 1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <label style="margin-bottom:0; font-size:0.75rem;">Override/Customize Grand Total on Update</label>
+                <input type="checkbox" id="edit-override-toggle" onchange="toggleEditOverrideTotal(this.checked)" style="width:16px; height:16px; cursor:pointer;">
+              </div>
+              <input type="number" id="edit-override-total-input" placeholder="Enter custom Grand Total" step="0.01" min="0" style="display:none;">
+            </div>
+
+            <!-- Edit Custom Notes and Custom Notes Textarea -->
+            <div class="glass-card" style="padding: 0.85rem; margin-bottom: 1.25rem; background: var(--bg-table-responsive); border-color: var(--border-input); margin-top: 1rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <label style="margin-bottom:0; font-size:0.75rem;">Print Custom Notes / Remarks on Update</label>
+                <input type="checkbox" id="edit-notes-toggle" onchange="toggleEditNotesDisplay(this.checked)" style="width:16px; height:16px; cursor:pointer;">
+              </div>
+              <textarea id="edit-notes-input" placeholder="Type custom notes / points to print on the invoice..." rows="2" style="display:none; width:100%; font-size:0.8rem; margin-top:0.5rem; padding:0.4rem; background:var(--bg-glass-input); color:var(--text-main); border:1px solid var(--border-glass); border-radius:4px; resize:vertical;"></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
+              <button type="button" class="btn btn-secondary" style="width: auto;" onclick="cancelEditTransaction()">Cancel</button>
+              <button type="submit" class="btn btn-primary" style="width: auto; min-width: 180px;">Save Updates</button>
+            </div>
+          </form>
+        </article>
+
+        <!-- Bill History Table Grid -->
+        <article class="glass-card">
+          <div class="invoice-actions-row" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <h3 class="card-title" style="border:none; margin:0; padding:0;">
+                <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Transaction Log Journal
+              </h3>
+              <button type="button" class="btn btn-secondary" onclick="openFieldManager('sales')" style="width:auto;height:34px;font-size:0.78rem;padding:0 0.8rem;border-color:var(--color-primary);">
+                <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                Manage Fields
+              </button>
+            </div>
+            
+            <div style="display:flex; gap:0.5rem;">
+              <!-- Excel & CSV Uploader Elements -->
+              <input type="file" id="sales-csv-file" accept=".csv, .xlsx, .xls" style="display:none;" onchange="importSalesExcelOrCSV(event)">
+              <button class="btn btn-secondary" onclick="document.getElementById('sales-csv-file').click()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-primary); color: var(--text-main);">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: var(--color-primary); fill: none;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                Upload Excel / CSV
+              </button>
+              
+              <button class="btn btn-secondary" onclick="exportSalesToCSV()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem;">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px;"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Export CSV
+              </button>
+              
+              <button class="btn btn-secondary" onclick="exportSalesToExcel()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-primary); color: var(--text-main);">
+                Export Excel
+              </button>
+              
+              <button class="btn btn-secondary" onclick="exportSalesToPDF()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-accent); color: var(--text-main);">
+                Export PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="sales-history-table">
+              <thead>
+                <tr></tr>
+              </thead>
+              <tbody id="sales-table-body">
+                <!-- Loaded dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- ==================== TAB 3: PURCHASE DETAILS ==================== -->
+      <section id="purchase-details-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Purchase Details Journal</h1>
+              <p>Record vehicle stock purchase orders. All vehicles (both in stock and sold) are shown here with their current sale status.</p>
+        </header>
+
+        <div class="billing-layout">
+          <!-- Left: Purchase Form -->
+          <div class="billing-forms-column">
+            <article class="glass-card">
+              <h3 class="card-title" style="justify-content:space-between; align-items:center; display:flex;">
+                <span style="display:flex;align-items:center;gap:0.5rem;">
+                  <svg viewBox="0 0 24 24"><path d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  Log Inbound Purchase Bill
+                </span>
+                <button type="button" class="btn btn-secondary" onclick="openFieldManager('purchase')" style="width:auto;height:34px;font-size:0.78rem;padding:0 0.9rem;border-color:var(--color-primary);">
+                  <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                  Manage Fields
+                </button>
+              </h3>
+              <form id="purchase-log-form" onsubmit="handleNewPurchaseForm(event)">
+                <div class="grid-2" id="purchase-form-grid">
+                  <!-- Fields rendered dynamically by renderDynamicPurchaseForm() in app.js -->
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                  <button type="submit" class="btn btn-primary" style="width: auto; min-width: 250px;">
+                    <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M12 4v16m8-8H4"/></svg>
+                    <span>Save Purchase &amp; Add Stock</span>
+                  </button>
+                </div>
+              </form>
+            </article>
+          </div>
+
+          <!-- Right Column -->
+          <div class="billing-summary-column">
+            <article class="glass-card highlight">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Inventory Integration
+              </h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Logging purchases automatically registers the e-bike details including the newly added **Charger Serial Number** in inventory database, ready for billing.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Purchase Journal Table Grid -->
+        <article class="glass-card" style="margin-top: 2rem;">
+          <div class="invoice-actions-row" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <h3 class="card-title" style="border:none; margin:0; padding:0;">
+              <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+              Supplier Purchase Ledger
+            </h3>
+            
+            <div style="display:flex; gap:0.5rem;">
+              <!-- Excel & CSV Uploader -->
+              <input type="file" id="purchase-csv-file" accept=".csv, .xlsx, .xls" style="display:none;" onchange="importPurchasesExcelOrCSV(event)">
+              <button class="btn btn-secondary" onclick="document.getElementById('purchase-csv-file').click()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-primary); color: var(--text-main);">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: var(--color-primary); fill: none;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                Upload Excel / CSV
+              </button>
+
+              <button class="btn btn-secondary" onclick="exportPurchasesToCSV()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1.25rem;">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px;"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Export CSV
+              </button>
+              
+              <button class="btn btn-secondary" onclick="exportPurchasesToExcel()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1.25rem; border-color: var(--color-primary); color: var(--text-main);">
+                Export Excel
+              </button>
+              
+              <button class="btn btn-secondary" onclick="exportPurchasesToPDF()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1.25rem; border-color: var(--color-accent); color: var(--text-main);">
+                Export PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="purchases-history-table">
+              <thead>
+                <tr></tr>
+              </thead>
+              <tbody id="purchases-table-body">
+                <!-- Loaded dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- ==================== TAB 4: STOCK DETAILS ==================== -->
+      <section id="stock-details-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Stock Details & Valuation</h1>
+          <p>Monitor real-time inventory, profit margin matrices, and status valuations.</p>
+        </header>
+
+        <!-- Edit E-Bike Spec Panel (Initially Hidden) -->
+        <article class="glass-card" id="edit-bike-panel" style="display: none; margin-bottom: 2rem; border-color: var(--color-secondary);">
+          <h3 class="card-title" style="color: var(--color-secondary);">
+            <svg viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            Edit E-Bike Specifications: <span id="edit-bike-chassis-title" style="font-family: monospace;">-</span>
+          </h3>
+          <form onsubmit="saveEditedBike(event)">
+            <input type="hidden" id="edit-bike-original-chassis">
+            <div class="grid-3">
+              <div class="form-group">
+                <label for="edit-bike-model">Model Name *</label>
+                <input type="text" id="edit-bike-model" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-bike-chassis">Chassis Number *</label>
+                <input type="text" id="edit-bike-chassis" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-bike-motor">Motor Number *</label>
+                <input type="text" id="edit-bike-motor" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-bike-battery">Battery Serial *</label>
+                <input type="text" id="edit-bike-battery" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-bike-charger">Charger Serial *</label>
+                <input type="text" id="edit-bike-charger" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-bike-hsn">HSN Code *</label>
+                <input type="text" id="edit-bike-hsn" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-bike-cost">Purchase Cost Price (₹) *</label>
+                <input type="number" id="edit-bike-cost" step="0.01" min="0" required>
+              </div>
+              <div class="form-group">
+                <label for="edit-bike-selling">Retail Base Price (₹) *</label>
+                <input type="number" id="edit-bike-selling" step="0.01" min="0" required>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
+              <button type="button" class="btn btn-secondary" style="width: auto;" onclick="cancelEditBike()">Cancel</button>
+              <button type="submit" class="btn btn-primary" style="width: auto; min-width: 180px;">Save Updates</button>
+            </div>
+          </form>
+        </article>
+
+        <!-- Current Stock Card -->
+        <article class="glass-card">
+          <div class="invoice-actions-row" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <h3 class="card-title" style="border:none; margin:0; padding:0;">
+                <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                Active Stock Valuation Ledger
+              </h3>
+              <button type="button" class="btn btn-secondary" onclick="openFieldManager('stock')" style="width:auto;height:34px;font-size:0.78rem;padding:0 0.8rem;border-color:var(--color-primary);">
+                <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                Manage Fields
+              </button>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary" onclick="exportStockToCSV()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem;">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px;"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Export CSV
+              </button>
+              <button class="btn btn-secondary" onclick="exportStockToExcel()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-primary); color: var(--text-main);">
+                Export Excel
+              </button>
+              <button class="btn btn-secondary" onclick="exportStockToPDF()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-accent); color: var(--text-main);">
+                Export PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="stock-valuation-table">
+              <thead>
+                <tr></tr>
+              </thead>
+              <tbody id="stock-details-table-body">
+                <!-- Loaded dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- ==================== TAB 5: SPARES INVENTORY & STOCKS ==================== -->
+      <section id="spares-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Spares Inventory</h1>
+          <p>Maintain mechanical e-bike spare parts, product lines, and reorder levels.</p>
+        </header>
+
+        <div class="billing-layout">
+          <!-- Left: Add Spare Part Form -->
+          <div class="billing-forms-column">
+            <article class="glass-card">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Add New Spare Part Item
+              </h3>
+              <form id="spare-part-form" onsubmit="handleNewSpareForm(event)">
+                <div class="grid-2">
+                  <div class="form-group">
+                    <label for="spare-name">Part / Item Name *</label>
+                    <input type="text" id="spare-name" placeholder="e.g. Brake Shoe Set" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="spare-sku">SKU / Part Number *</label>
+                    <input type="text" id="spare-sku" placeholder="e.g. SL-BS-092" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="spare-hsn">HSN Code *</label>
+                    <input type="text" id="spare-hsn" value="871410" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="spare-qty">Quantity in Stock *</label>
+                    <input type="number" id="spare-qty" min="0" value="10" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="spare-min-level">Min Threshold Level (Alert) *</label>
+                    <input type="number" id="spare-min-level" min="0" value="3" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="spare-cost">Purchase Cost Price (₹) *</label>
+                    <input type="number" id="spare-cost" step="0.01" min="0" placeholder="0.00" required>
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="spare-retail">Retail Selling Rate (₹ Base) *</label>
+                    <input type="number" id="spare-retail" step="0.01" min="0" placeholder="0.00" required>
+                  </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                  <button type="submit" class="btn btn-primary" style="width: auto; min-width: 200px;">
+                    Save Part Stock
+                  </button>
+                </div>
+              </form>
+            </article>
+          </div>
+
+          <!-- Right Column -->
+          <div class="billing-summary-column">
+            <article class="glass-card highlight">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                Low Stock Threshold Alerts
+              </h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                When a spare part's stock falls to or below its threshold value, the inventory status badge glows orange with a **Low Stock** warning to prompt a supplier reorder.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Spares Ledger Grid Table -->
+        <article class="glass-card" style="margin-top: 2rem;">
+          <div class="invoice-actions-row" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="card-title" style="border:none; margin:0; padding:0;">
+              <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h11"/></svg>
+              Spare Parts Catalog Ledger
+            </h3>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary" onclick="exportSparesToCSV()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem;">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px;"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Export CSV
+              </button>
+              <button class="btn btn-secondary" onclick="exportSparesToExcel()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-primary); color: var(--text-main);">
+                Export Excel
+              </button>
+              <button class="btn btn-secondary" onclick="exportSparesToPDF()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-accent); color: var(--text-main);">
+                Export PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="spares-ledger-table">
+              <thead>
+                <tr>
+                  <th>Part Name</th>
+                  <th>SKU / Part No</th>
+                  <th>HSN/SAC</th>
+                  <th>Purchase Cost</th>
+                  <th>Retail Base Rate</th>
+                  <th>Quantity in Stock</th>
+                  <th>Reorder Level</th>
+                  <th>Status Badges</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="spares-details-tbody">
+                <!-- Loaded dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- ==================== TAB 5B: SPARES SALES HISTORY ==================== -->
+      <section id="spares-history-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Spares Sales &amp; Servicing History</h1>
+          <p>Review, search, edit, delete, and export spares sales invoices and services receipts.</p>
+        </header>
+
+        <article class="glass-card" style="margin-bottom: 2rem;">
+          <h3 class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+              Spares Sales Log Ledger
+            </span>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-secondary" onclick="exportSparesHistoryToExcel()" style="width: auto; height: 32px; font-size: 0.75rem; padding: 0 0.85rem; border-color: var(--color-primary);">
+                Export Excel
+              </button>
+              <button class="btn btn-secondary" onclick="exportSparesHistoryToPDF()" style="width: auto; height: 32px; font-size: 0.75rem; padding: 0 0.85rem; border-color: var(--color-accent);">
+                Export PDF
+              </button>
+            </div>
+          </h3>
+          
+          <div class="table-container">
+            <table class="data-table" id="spares-history-ledger-table">
+              <thead>
+                <tr>
+                  <th>Invoice No</th>
+                  <th>Date</th>
+                  <th>Customer Name</th>
+                  <th>Mobile Number</th>
+                  <th>Sold Spares Details</th>
+                  <th style="text-align: right;">Labor Charges (₹)</th>
+                  <th style="text-align: right;">CGST (₹)</th>
+                  <th style="text-align: right;">SGST (₹)</th>
+                  <th style="text-align: right;">Grand Total (₹)</th>
+                  <th style="text-align: center;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="spares-history-ledger-tbody">
+                <!-- Populated dynamically in app.js -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- ==================== TAB 6: SERVICES REGISTRY ==================== -->
+      <section id="services-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Vehicle Service Center</h1>
+          <p>Register customer job cards, log mileage schedules, and track spare deductions.</p>
+        </header>
+
+        <div class="billing-layout">
+          <!-- Left: Add Service Form -->
+          <div class="billing-forms-column">
+            <article class="glass-card">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+                Register Customer Service Job Card
+              </h3>
+              <form id="service-log-form" onsubmit="handleNewServiceForm(event)">
+                <div class="grid-2">
+                  <div class="form-group">
+                    <label for="ser-invoice-no">Linked Invoice No</label>
+                    <input type="text" id="ser-invoice-no" placeholder="Optional Invoice Link">
+                  </div>
+                  <div class="form-group">
+                    <label for="ser-cust-name">Customer Name *</label>
+                    <input type="text" id="ser-cust-name" placeholder="Enter customer's name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="ser-chassis">Vehicle Chassis Number *</label>
+                    <!-- Triggers auto counter lookup on input/change -->
+                    <input type="text" id="ser-chassis" placeholder="Unique Chassis Serial" onkeyup="lookupServiceCounter(this.value)" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="ser-date">Service Date *</label>
+                    <input type="date" id="ser-date" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="ser-count-label">Service Count (Auto Detected) *</label>
+                    <input type="text" id="ser-count-label" placeholder="e.g. 1st Service" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="ser-odometer">Odometer Reading (KMs) *</label>
+                    <input type="number" id="ser-odometer" min="0" placeholder="e.g. 1500" required>
+                  </div>
+
+                <!-- Spares Integration inside Service -->
+                <div class="glass-card" style="padding: 1.15rem; margin-bottom: 1rem; background: var(--bg-table-responsive); border-color: var(--border-input); margin-top: 1rem;">
+                  <h4 class="card-title" style="font-size: 0.95rem; border: none; margin-bottom: 0.75rem; padding: 0;">
+                    <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                    Spares Deduct Builder
+                  </h4>
+                  <div class="grid-3" style="grid-template-columns: 2fr 1fr 1fr; align-items: flex-end; gap: 0.75rem;">
+                    <div class="form-group" style="margin-bottom:0;">
+                      <label for="ser-spare-select" style="font-size: 0.7rem;">Select Spare Part</label>
+                      <select id="ser-spare-select">
+                        <!-- Loaded dynamically -->
+                      </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                      <label for="ser-spare-qty" style="font-size: 0.7rem;">Quantity</label>
+                      <input type="number" id="ser-spare-qty" min="1" value="1">
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                      <button type="button" class="btn btn-secondary" style="height: 38px; font-size: 0.8rem; padding:0;" onclick="addSpareToServiceBuilder()">
+                        Add Part
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Temporary spares list inside builder -->
+                  <div style="margin-top: 0.85rem; font-size:0.8rem;" id="ser-builder-spares-list">
+                    <!-- Loaded dynamically -->
+                  </div>
+                </div>
+
+                <div class="grid-2">
+                  <div class="form-group">
+                    <label for="ser-spares-cost">Spares Bill Cost (₹)</label>
+                    <input type="number" id="ser-spares-cost" min="0" value="0" onkeyup="recalculateServiceGrandTotal()" onchange="recalculateServiceGrandTotal()">
+                  </div>
+                  <div class="form-group">
+                    <label for="ser-labor-cost">Service Labor Charges (₹) *</label>
+                    <input type="number" id="ser-labor-cost" min="0" value="0" onkeyup="recalculateServiceGrandTotal()" required>
+                  </div>
+                </div>
+
+                <div class="summary-row total" style="border-top:1px dashed var(--border-glass); padding-top:0.75rem; margin-bottom:1rem;">
+                  <span class="row-label" style="font-weight:700;">Service Grand Total:</span>
+                  <span id="ser-calc-total" class="row-value" style="font-family:var(--font-heading); font-size:1.25rem; font-weight:800; color:var(--color-primary);">₹ 0.00</span>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end;">
+                  <button type="submit" class="btn btn-primary" style="width: auto; min-width: 250px;">
+                    Register Service Card
+                  </button>
+                </div>
+              </form>
+            </article>
+          </div>
+
+          <!-- Right Column -->
+          <div class="billing-summary-column">
+            <article class="glass-card highlight">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                Sorting & Service Count Alerts
+              </h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
+                Mileage services log automatically. 
+              </p>
+              <div class="specs-grid" style="display: block; font-size: 0.85rem;">
+                <p style="margin-bottom:0.5rem;">➡️ <strong>Chassis Counter</strong>: Typing a vehicle's chassis number scans active logs and instantly auto-calculates if the client is here for their 1st, 2nd, or 3rd service!</p>
+                <p>➡️ <strong>Parts Deduct System</strong>: Selecting parts from spares automatically subtracts billable quantities from stock upon service registration.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Service History Table Grid -->
+        <article class="glass-card" style="margin-top: 2rem;">
+          <div class="invoice-actions-row" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <h3 class="card-title" style="border:none; margin:0; padding:0;">
+              <svg viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+              Showroom Service Logs Ledger
+            </h3>
+            
+            <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+              <!-- Sort selection dropdown -->
+              <div style="display:flex; align-items:center; gap:0.35rem;">
+                <label style="margin:0; font-size:0.75rem; white-space:nowrap; text-transform:none;">Sort By:</label>
+                <select id="services-sort-select" onchange="sortServicesLedger(this.value)" style="width: auto; height: 42px; font-size: 0.8rem; padding: 0.25rem 1rem;">
+                  <option value="date-desc">Date (Newest First)</option>
+                  <option value="date-asc">Date (Oldest First)</option>
+                  <option value="invoice-asc">Invoice No (Ascending)</option>
+                  <option value="invoice-desc">Invoice No (Descending)</option>
+                  <option value="count">Service Count Number</option>
+                </select>
+              </div>
+
+              <button class="btn btn-secondary" onclick="exportServicesToCSV()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem;">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px;"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Export CSV
+              </button>
+              <button class="btn btn-secondary" onclick="exportServicesToExcel()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-primary); color: var(--text-main);">
+                Export Excel
+              </button>
+              <button class="btn btn-secondary" onclick="exportServicesToPDF()" style="width: auto; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--color-accent); color: var(--text-main);">
+                Export PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="services-ledger-table">
+              <thead>
+                <tr>
+                  <th>Job ID</th>
+                  <th>Invoice Link</th>
+                  <th>Chassis No</th>
+                  <th>Customer Name</th>
+                  <th>Date</th>
+                  <th>Service No</th>
+                  <th>Odometer (KMs)</th>
+                  <th>Spares cost</th>
+                  <th>Labor charge</th>
+                  <th>Total Bill</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="services-details-tbody">
+                <!-- Loaded dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- ==================== TAB 7: DEALERSHIPS PROFILE SETTINGS ==================== -->
+      <section id="settings-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Showroom Settings</h1>
+          <p>Customize branding, legal headers, GSTIN credentials, bank accounts, and print policies.</p>
+        </header>
+
+        <div class="billing-layout">
+          <!-- Left Forms Panel -->
+          <div class="billing-forms-column">
+            <article class="glass-card">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                Edit Showroom Profile Details
+              </h3>
+              
+              <form onsubmit="saveDealershipSettingsForm(event)">
+                <div class="grid-2">
+                  <div class="form-group">
+                    <label for="set-brand-name">Showroom Brand (Top Left cell) *</label>
+                    <input type="text" id="set-brand-name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="set-legal-name">Legal Trade Name (Main Title) *</label>
+                    <input type="text" id="set-legal-name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="set-gstin">Showroom GSTIN Registration *</label>
+                    <input type="text" id="set-gstin" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="set-phone">Contact Mobile Number *</label>
+                    <input type="tel" id="set-phone" required>
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="set-address1">Showroom Address Line 1 *</label>
+                    <input type="text" id="set-address1" required>
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="set-address2">Showroom Address Line 2 *</label>
+                    <input type="text" id="set-address2" required>
+                  </div>
+                </div>
+
+                <h4 class="card-title" style="font-size: 1rem; border: none; margin-top: 1.5rem; margin-bottom: 0.5rem; padding: 0;">
+                  <svg viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                  Dealership Settlement Accounts (Bank Details)
+                </h4>
+                
+                <div class="grid-3">
+                  <div class="form-group">
+                    <label for="set-bank-holder">Account Holder Name *</label>
+                    <input type="text" id="set-bank-holder" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="set-bank-cust-id">Customer ID *</label>
+                    <input type="text" id="set-bank-cust-id" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="set-bank-name">Bank Name *</label>
+                    <input type="text" id="set-bank-name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="set-bank-branch">Branch Name *</label>
+                    <input type="text" id="set-bank-branch" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="set-bank-acc">Account Number *</label>
+                    <input type="text" id="set-bank-acc" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="set-bank-ifsc">IFSC Code *</label>
+                    <input type="text" id="set-bank-ifsc" required>
+                  </div>
+                </div>
+
+                <h4 class="card-title" style="font-size: 1rem; border: none; margin-top: 1.5rem; margin-bottom: 0.5rem; padding: 0;">
+                  <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Invoice Print Policies
+                </h4>
+                <div class="form-group">
+                  <label for="set-tc1">Terms & Conditions Policy Line 1 *</label>
+                  <input type="text" id="set-tc1" required>
+                </div>
+                <div class="form-group">
+                  <label for="set-tc2">Terms & Conditions Policy Line 2 *</label>
+                  <input type="text" id="set-tc2" required>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                  <button type="submit" class="btn btn-primary" style="width: auto; min-width: 250px;">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M5 13l4 4L19 7"/></svg>
+                    <span>Save Showroom Profile</span>
+                  </button>
+                </div>
+              </form>
+            </article>
+          </div>
+
+          <!-- Right Column -->
+          <div class="billing-summary-column">
+            <article class="glass-card highlight">
+              <h3 class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 113.536 0V21h-2v-5.1a4.97 4.97 0 01-1.536 0z"/></svg>
+                Customizing Printouts
+              </h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                All fields entered on this profile settings page dynamically alter the branding header, tax ID blocks, payment instructions, and terms and policies displayed in the final **Invoice Printer** tab in real-time.
+              </p>
+            </article>
+
+            <!-- Data Management Card -->
+            <article class="glass-card" style="margin-top: 1.5rem; border-color: var(--color-secondary);">
+              <h3 class="card-title" style="color: var(--color-secondary);">
+                <svg viewBox="0 0 24 24"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+                Data Management
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem;">
+                Use <strong style="color:var(--text-main);">Refresh All Views</strong> after uploading Excel files to force all tabs to sync. Use the manual backup buttons below to download or restore your entire system database file locally.
+              </p>
+              <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+                  <button class="btn btn-secondary" onclick="downloadWholeDatabaseJSON()" style="width:100%; border-color: #39ff14; color: #39ff14; background: rgba(57, 255, 20, 0.05); display: flex; align-items: center; justify-content: center; gap: 4px;">
+                    <svg viewBox="0 0 24 24" style="width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2.5;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    <span>Download DB</span>
+                  </button>
+                  <button class="btn btn-secondary" onclick="document.getElementById('db-backup-upload-input').click()" style="width:100%; border-color: #00f0ff; color: #00f0ff; background: rgba(0, 240, 255, 0.05); display: flex; align-items: center; justify-content: center; gap: 4px;">
+                    <svg viewBox="0 0 24 24" style="width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2.5;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                    <span>Upload DB</span>
+                  </button>
+                  <input type="file" id="db-backup-upload-input" accept=".json" style="display:none;" onchange="uploadWholeDatabaseJSON(event)">
+                </div>
+                <button class="btn btn-secondary" onclick="refreshAllViews(); alert('All tabs refreshed from current data.');" style="width:100%; border-color: var(--color-secondary);">
+                  <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2.5;"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                  Refresh All Views
+                </button>
+                <button class="btn btn-danger" onclick="resetAllData()" style="width:100%;">
+                  <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2.5;"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                  Reset All Vehicle Data
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 8: INVOICE PRINTER ==================== -->
+      <section id="invoice-printer-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Print Station</h1>
+          <p>Review, print, and download pixel-perfect high-fidelity PDF documents.</p>
+        </header>
+
+        <div id="printer-content-area">
+          <!-- Default Empty State -->
+          <article class="glass-card empty-printer-state" id="printer-empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4"/></svg>
+            <h3>No Invoice Loaded</h3>
+            <p>Generate a transaction under the **New Billing** tab or select a processed invoice from the **Sales Details** history tab to print.</p>
+            <button class="btn btn-secondary" onclick="switchTab('new-billing-tab')" style="width: auto;">
+              Go to New Billing
+            </button>
+          </article>
+          
+          <!-- Structured Invoice Layout Replica -->
+          <div class="invoice-viewer-container" id="invoice-viewer" style="display: none;">
+            
+            <div class="invoice-actions-row">
+              <button class="btn btn-secondary" onclick="switchTab('sales-details-tab')">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                View Sales History
+              </button>
+              <button class="btn btn-secondary" onclick="downloadInvoicePDFSafe()" style="background: hsla(250, 95%, 68%, 0.15); border-color: var(--color-secondary); color: var(--text-main);">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Download PDF
+              </button>
+              <button class="btn btn-primary" onclick="window.print()">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4"/></svg>
+                Print Invoice
+              </button>
+              <button class="btn btn-secondary" onclick="openShareModal()" style="background: hsla(142, 76%, 45%, 0.15); border-color: var(--color-stock); color: var(--text-main); width: auto;">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M8.684 10.742l4.632-2.316m0 7.148l-4.632-2.316M19 6a3 3 0 11-6 0 3 3 0 016 0zM6 18a3 3 0 11-6 0 3 3 0 016 0zm13-6a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Share Bill / Invoice
+              </button>
+            </div>
+
+            <!-- Dynamic Print Columns Toggles Card -->
+            <article class="glass-card" style="margin-bottom: 1.5rem; border-color: var(--color-primary); padding: 1.25rem;">
+              <h3 class="card-title" style="margin-bottom: 0.5rem; border: none; padding: 0;">
+                <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:var(--color-primary); fill:none; stroke-width:2;"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                Select Display Columns for Bill
+              </h3>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem;">Toggle the checkboxes below to select which technical fields show on the printed Tax Invoice in real-time.</p>
+              <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.82rem; font-weight: 600;">
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main);">
+                  <input type="checkbox" id="toggle-col-chassis" checked onchange="togglePrintColumn('col-chassis', this.checked)" style="width:16px; height:16px; cursor:pointer;"> Chassis No
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main);">
+                  <input type="checkbox" id="toggle-col-motor" checked onchange="togglePrintColumn('col-motor', this.checked)" style="width:16px; height:16px; cursor:pointer;"> Motor No
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main);">
+                  <input type="checkbox" id="toggle-col-battery" checked onchange="togglePrintColumn('col-battery', this.checked)" style="width:16px; height:16px; cursor:pointer;"> Battery No
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main);">
+                  <input type="checkbox" id="toggle-col-charger" checked onchange="togglePrintColumn('col-charger', this.checked)" style="width:16px; height:16px; cursor:pointer;"> Charger No
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main);">
+                  <input type="checkbox" id="toggle-col-hsn" checked onchange="togglePrintColumn('col-hsn', this.checked)" style="width:16px; height:16px; cursor:pointer;"> HSN/SAC Code
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main);">
+                  <input type="checkbox" id="toggle-print-bank" checked onchange="togglePrintBankDetails(this.checked)" style="width:16px; height:16px; cursor:pointer;"> Show Bank Details
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main);">
+                  <input type="checkbox" id="toggle-print-balance" checked onchange="togglePrintBalanceDue(this.checked)" style="width:16px; height:16px; cursor:pointer;"> Show Balance Due
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; text-transform: none; color: var(--text-main);">
+                  <input type="checkbox" id="toggle-print-notes" checked onchange="togglePrintNotes(this.checked)" style="width:16px; height:16px; cursor:pointer;"> Show Custom Notes
+                </label>
+              </div>
+            </article>
+ 
+            <!-- Replica Document Sheet Frame -->
+            <article class="invoice-paper" id="invoice-paper-element">
+              <div class="photo-invoice-grid">
+                
+                <!-- TOP HEADER ROW -->
+                <div class="photo-cell-header-brand" id="rep-brand-name">ADMS e BIKES</div>
+                <div class="photo-cell-header-title">GST TAX INVOICE</div>
+                
+                <!-- SHOP NAME BLOCK -->
+                <div class="photo-cell-shop-info">
+                  <h1 id="rep-legal-name">SRI LAKSHMI e BIKES</h1>
+                  <p><span id="rep-address1">GROUND TS NO 2/ 2A1 ,</span> <span id="rep-address2">TIRUPATHUR DISTRICT, TAMILNADU-635751</span></p>
+                </div>
+                
+                <!-- PHONE & SHOP GSTIN -->
+                <div class="photo-cell-shop-meta-left">Mobile no : <span id="rep-phone">9944659264</span></div>
+                <div class="photo-cell-shop-meta-right">GSTIN : <span id="rep-gstin">33AMGPV7681L2Z9</span></div>
+                
+                <!-- CUSTOMER / BILL TO BLOCK -->
+                <div class="photo-cell-bill-to">
+                  <div class="label-header">BILL TO :</div>
+                  <div class="buyer-data-block">
+                    <strong id="rep-cust-name">PRABHU EBikes</strong><br id="rep-cust-address-br">
+                    <span id="rep-cust-address">1A1-1025, VELKUR, VELKUR GRAM PANCHAYATH, Hyderabad</span>
+                  </div>
+                  <div class="buyer-data-phone" id="rep-cust-phone-row">PH NO : <span id="rep-cust-phone">9441008620</span></div>
+                  <div class="buyer-data-gstin" id="rep-cust-gstin-row">GSTIN : <span id="rep-cust-gstin">37AGUPJ6908J1ZP</span></div>
+                  <div class="buyer-data-email" id="rep-cust-email-row" style="display: none; padding-left: 1rem; font-weight: 700;">EMAIL : <span id="rep-cust-email">-</span></div>
+                </div>
+                
+                <!-- INVOICE META DETAILS BLOCK -->
+                <div class="photo-cell-invoice-meta">
+                  <div class="meta-flex-row">
+                    <span class="meta-label">INVOICE NO</span>
+                    <span class="meta-sep">:</span>
+                    <span class="meta-val" id="rep-inv-no">18</span>
+                  </div>
+                  <div class="meta-flex-row">
+                    <span class="meta-label">DATE</span>
+                    <span class="meta-sep">:</span>
+                    <span class="meta-val" id="rep-inv-date">10-04-26</span>
+                  </div>
+                  <div class="meta-flex-row">
+                    <span class="meta-label">REF NO</span>
+                    <span class="meta-sep">:</span>
+                    <span class="meta-val" id="rep-inv-ref">NON REG</span>
+                  </div>
+                  <div class="meta-flex-row" style="margin-bottom: 0.25rem;">
+                    <span class="meta-label">PAYMENT TYPE</span>
+                    <span class="meta-sep">:</span>
+                    <span class="meta-val" id="rep-inv-payment">CASH</span>
+                  </div>
+                  <div class="meta-flex-row" id="rep-cust-id-row" style="display: none;">
+                    <span class="meta-label">ID NO</span>
+                    <span class="meta-sep">:</span>
+                    <span class="meta-val" id="rep-cust-id">-</span>
+                  </div>
+                  <div class="meta-flex-row" id="rep-balance-due-row" style="display: none; color: #cc0000; font-weight: bold;">
+                    <span class="meta-label">BALANCE DUE</span>
+                    <span class="meta-sep">:</span>
+                    <span class="meta-val" id="rep-balance-due-val">-</span>
+                  </div>
+                </div>
+                
+                <!-- TABLE GRID CONTENT CONTAINER (Merged borders to match the image exactly) -->
+                <div class="photo-cell-table-area">
+                  <table class="rep-table" id="replica-print-table">
+                    <thead>
+                      <tr>
+                        <th class="col-sno">SNO</th>
+                        <th class="col-particulars">PARTICULARS</th>
+                        <th class="col-chassis">CHASIS NO</th>
+                        <th class="col-motor">MOTOR NO</th>
+                        <th class="col-battery">BATTERY NO</th>
+                        <th class="col-charger">CHARGER NO</th>
+                        <th class="col-hsn">HSN/SAC NO</th>
+                        <th class="col-qty">QTY</th>
+                        <th class="col-rate">RATE</th>
+                        <th class="col-amount">AMOUNT</th>
+                      </tr>
+                    </thead>
+                    <tbody id="replica-print-tbody">
+                      <!-- Loaded dynamically in app.js depending on sale mode -->
+                    </tbody>
+                  </table>
+                </div>
+                
+                <!-- BANK DETAILS & TERMS AND CONDITIONS POLICY (LEFT SIDE) -->
+                <div class="photo-cell-bank-terms">
+                  <div class="bank-details-wrapper" id="rep-bank-wrapper">
+                    <strong>Bank Details:</strong><br>
+                    <span id="rep-bank-details">ICICI Bank | A/C: 12340500987 | IFSC: ICIC0001234</span>
+                  </div>
+                  <div class="terms-conditions-wrapper" style="margin-top: 0.85rem;">
+                    <strong>Terms & Conditions:</strong>
+                    <ol>
+                      <li id="rep-tc1">Ours responsibility ceases onces the goods leave our showroom.</li>
+                      <li id="rep-tc2">Goods once sold will not be accepted back under any circumstances.</li>
+                    </ol>
+                  </div>
+                </div>
+                
+                <!-- AUTHORISED DEALER SIGNATURE BLOCK (RIGHT SIDE) -->
+                <div class="photo-cell-signature">
+                  <div class="sig-showroom-label">For <span id="rep-sig-showroom-name">Sri Lakshmi e Bikes</span></div>
+                  <div class="sig-space-stamp"></div>
+                  <div class="sig-proprietor-label">Proprietor</div>
+                </div>
+
+            </article>
+
+            <!-- Replica Document Sheet Frame for Service Card -->
+            <article class="invoice-paper service-card-paper" id="service-card-paper-element" style="display: none;">
+              <div class="photo-invoice-grid">
+                
+                <!-- TOP HEADER ROW -->
+                <div class="photo-cell-header-brand" id="rep-ser-brand-name">ADMS e BIKES</div>
+                <div class="photo-cell-header-title">VEHICLE JOB CARD / SERVICE RECORD</div>
+                
+                <!-- SHOP NAME BLOCK -->
+                <div class="photo-cell-shop-info">
+                  <h1 id="rep-ser-legal-name">SRI LAKSHMI e BIKES</h1>
+                  <p><span id="rep-ser-address1">GROUND TS NO 2/ 2A1 ,</span> <span id="rep-ser-address2">TIRUPATHUR DISTRICT, TAMILNADU-635751</span></p>
+                </div>
+                
+                <!-- PHONE & SHOP GSTIN -->
+                <div class="photo-cell-shop-meta-left">Mobile no : <span id="rep-ser-phone">9944659264</span></div>
+                <div class="photo-cell-shop-meta-right">GSTIN : <span id="rep-ser-gstin">33AMGPV7681L2Z9</span></div>
+                
+                <!-- CUSTOMER / BILL TO BLOCK -->
+                <div class="photo-cell-bill-to">
+                  <div class="label-header">CUSTOMER DETAILS :</div>
+                  <div class="buyer-data-block">
+                    <strong id="rep-ser-cust-name">-</strong><br>
+                    <span>Chassis No: </span><strong id="rep-ser-chassis">-</strong>
+                  </div>
+                  <div class="buyer-data-phone">Service Category/Count: <span id="rep-ser-count">-</span></div>
+                  <div class="buyer-data-gstin" id="rep-ser-invoice-row">Invoice Ref No: <span id="rep-ser-invoice-no">-</span></div>
+                </div>
+                
+                <!-- INVOICE META DETAILS BLOCK -->
+                <div class="photo-cell-invoice-meta">
+                  <div class="meta-flex-row">
+                    <span class="meta-label">JOB CARD NO</span>
+                    <span class="meta-sep">:</span>
+                    <span class="meta-val" id="rep-ser-job-id">-</span>
+                  </div>
+                  <div class="meta-flex-row">
+                    <span class="meta-label">DATE</span>
+                    <span class="meta-sep">:</span>
+                    <span class="meta-val" id="rep-ser-date">-</span>
+                  </div>
+                  <div class="meta-flex-row">
+                    <span class="meta-label">ODOMETER</span>
+                    <span class="meta-sep">:</span>
+                    <span class="meta-val" id="rep-ser-odometer">- KMs</span>
+                  </div>
+                </div>
+                
+                <!-- TABLE GRID CONTENT CONTAINER -->
+                <div class="photo-cell-table-area">
+                  <table class="rep-table" id="replica-ser-print-table">
+                    <thead>
+                      <tr>
+                        <th class="col-sno" style="width: 8%;">SNO</th>
+                        <th class="col-particulars" style="width: 52%;">SPARES / SERVICES PARTICULARS</th>
+                        <th class="col-hsn" style="width: 15%;">HSN/SAC</th>
+                        <th class="col-qty" style="width: 10%;">QTY</th>
+                        <th class="col-rate" style="width: 15%;">AMOUNT</th>
+                      </tr>
+                    </thead>
+                    <tbody id="replica-ser-print-tbody">
+                      <!-- Loaded dynamically in app.js -->
+                    </tbody>
+                  </table>
+                </div>
+                
+                <!-- BANK DETAILS & TERMS AND CONDITIONS POLICY (LEFT SIDE) -->
+                <div class="photo-cell-bank-terms">
+                  <div class="terms-conditions-wrapper">
+                    <strong>Service Disclaimers & T&C:</strong>
+                    <ol>
+                      <li>Subjected to local jurisdiction and inspection clearances.</li>
+                      <li>Customer acknowledged that the vehicle works have been completed to satisfaction.</li>
+                    </ol>
+                  </div>
+                </div>
+                
+                <!-- AUTHORISED DEALER SIGNATURE BLOCK (RIGHT SIDE) -->
+                <div class="photo-cell-signature" style="height: 135px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; text-align: right;">
+                  <div class="sig-showroom-label" style="font-size: 11px;">
+                    <span>For <span id="rep-ser-sig-showroom-name">Sri Lakshmi e Bikes</span></span>
+                  </div>
+                  <div class="sig-space-stamp"></div>
+                  <div style="font-size: 11px; font-weight: bold; border-top: 1px dashed black; padding-top: 5px; width: 150px; text-align: center;">
+                    <span>Proprietor / Service Head</span>
+                  </div>
+                </div>
+
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 9: WARRANTY, T&C AND DELIVERY AGREEMENT ==================== -->
+      <section id="warranty-agreement-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Vehicle Delivery &amp; Warranty Agreement</h1>
+          <p>Draft, log, and print high-fidelity customer warranty sheets and delivery terms.</p>
+        </header>
+
+        <!-- Sub-Category Navigation inside Warranty Tab -->
+        <article class="glass-card" style="margin-bottom: 2rem; padding: 1.25rem;">
+          <label>Agreement Workspace Mode</label>
+          <div class="switch-container" style="margin-bottom: 0;">
+            <div class="switch-option active" id="war-cat-creator" onclick="setWarrantyTabMode('creator')">Draft New Agreement</div>
+            <div class="switch-option" id="war-cat-history" onclick="setWarrantyTabMode('history')">Agreement History Journal</div>
+          </div>
+        </article>
+
+        <!-- SUB-PANEL 1: CREATOR & DRAFTER PANEL -->
+        <div id="warranty-creator-panel">
+          <div class="billing-layout">
+            <!-- Left Manual Form Column -->
+            <div class="billing-forms-column">
+              <article class="glass-card form-group">
+                <h3 class="card-title" style="color: var(--color-primary);">
+                  <svg viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                  Manual Data Entry Fields
+                </h3>
+                
+                <!-- Quick Invoice Loader Helper (Optional secondary loader) -->
+                <div style="margin-bottom: 1.5rem; padding: 0.85rem; border-radius: 8px; border: 1px dashed var(--border-glass); background: hsla(222, 47%, 4%, 0.2);">
+                  <label for="agr-invoice-loader" style="font-size: 0.7rem; color: var(--color-secondary);">Optional: Load Details from processed invoice</label>
+                  <select id="agr-invoice-loader" onchange="loadInvoiceToAgreementFields(this.value)" style="padding: 0.45rem; font-size: 0.8rem; height: 36px;">
+                    <!-- Loaded dynamically -->
+                  </select>
+                </div>
+
+                <div class="grid-2">
+                  <!-- Section 1 Details -->
+                  <h4 class="card-title full-width" style="font-size: 0.88rem; border: none; margin-bottom: 0.25rem; padding: 0; color: var(--text-main); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Page 1 - Section 1: Vehicle Details
+                  </h4>
+                  <div class="form-group">
+                    <label for="agr-model-name">Vehicle Model Name *</label>
+                    <input type="text" id="agr-model-name" placeholder="e.g. RIDER GREEN (60V 24AH)" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group">
+                    <label for="agr-serial-no">Vehicle Serial / Chassis Number *</label>
+                    <input type="text" id="agr-serial-no" placeholder="Unique Chassis Serial" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group">
+                    <label for="agr-date">Date of Delivery *</label>
+                    <input type="date" id="agr-date" onchange="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group">
+                    <label for="agr-odometer">Odometer Reading at Delivery (KM) *</label>
+                    <input type="number" id="agr-odometer" value="0" min="0" onkeyup="syncAgreementFormToReplica()" onchange="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="agr-color">Vehicle Color *</label>
+                    <input type="text" id="agr-color" placeholder="e.g. GLOSSY RED &amp; BLACK" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+
+                  <!-- Section 2 Durations -->
+                  <h4 class="card-title full-width" style="font-size: 0.88rem; border: none; margin-top: 1rem; margin-bottom: 0.25rem; padding: 0; color: var(--text-main); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Page 1 - Section 2: Warranty &amp; Guarantee Durations
+                  </h4>
+                  <div class="form-group full-width">
+                    <label for="agr-coverage-type">Select Vehicle Coverage Type *</label>
+                    <select id="agr-coverage-type" onchange="toggleWarrantyGuaranteeInputs(); syncAgreementFormToReplica()">
+                      <option value="both" selected>Both Warranty &amp; Guarantee</option>
+                      <option value="warranty">Warranty Only</option>
+                      <option value="guarantee">Guarantee Only</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="agr-warranty-dur-container">
+                    <label for="agr-warranty-dur">Warranty Period (Months) *</label>
+                    <select id="agr-warranty-dur" onchange="syncAgreementFormToReplica()">
+                      <option value="6">6 Months Coverage</option>
+                      <option value="12" selected>12 Months (1 Year) Coverage</option>
+                      <option value="24">24 Months (2 Years) Coverage</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="agr-guarantee-dur-container">
+                    <label for="agr-guarantee-dur">Guarantee Period (Months) *</label>
+                    <select id="agr-guarantee-dur" onchange="syncAgreementFormToReplica()">
+                      <option value="6">6 Months Coverage</option>
+                      <option value="12" selected>12 Months (1 Year) Coverage</option>
+                      <option value="24">24 Months (2 Years) Coverage</option>
+                    </select>
+                  </div>
+
+                  <!-- Signatures Details -->
+                  <h4 class="card-title full-width" style="font-size: 0.88rem; border: none; margin-top: 1rem; margin-bottom: 0.25rem; padding: 0; color: var(--text-main); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Page 5 - Seller (Showroom) &amp; Buyer Signatures
+                  </h4>
+                  <div class="form-group">
+                    <label for="agr-showroom-name">Showroom Brand Name *</label>
+                    <input type="text" id="agr-showroom-name" placeholder="Brand Name" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group">
+                    <label for="agr-showroom-manager">Manager / Authorized Signee *</label>
+                    <input type="text" id="agr-showroom-manager" placeholder="Representative Name" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group">
+                    <label for="agr-showroom-phone">Showroom Contact Phone *</label>
+                    <input type="tel" id="agr-showroom-phone" placeholder="Showroom Phone" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group">
+                    <label for="agr-showroom-email">Showroom Contact Email (Optional)</label>
+                    <input type="text" id="agr-showroom-email" placeholder="Showroom Email" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="agr-showroom-address">Showroom Legal Address *</label>
+                    <textarea id="agr-showroom-address" placeholder="Complete showroom address" rows="2" onkeyup="syncAgreementFormToReplica()"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="agr-cust-name">Customer (Buyer) Name *</label>
+                    <input type="text" id="agr-cust-name" placeholder="Buyer's name" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group">
+                    <label for="agr-cust-phone">Customer Contact Phone *</label>
+                    <input type="tel" id="agr-cust-phone" placeholder="10-digit mobile" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="agr-cust-address">Customer Complete Address *</label>
+                    <textarea id="agr-cust-address" placeholder="Customer physical residence address" rows="2" onkeyup="syncAgreementFormToReplica()"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="agr-cust-email">Customer Email (Optional)</label>
+                    <input type="email" id="agr-cust-email" placeholder="Customer email address" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group">
+                    <label for="agr-cust-id-type">ID Proof Type (Optional)</label>
+                    <input type="text" id="agr-cust-id-type" placeholder="e.g. Aadhar / Driving License" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="agr-cust-id-val">ID Proof Number (Optional)</label>
+                    <input type="text" id="agr-cust-id-val" placeholder="e.g. Aadhar Number / DL Serial" onkeyup="syncAgreementFormToReplica()">
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Right Actions Sticky Sidebar Column -->
+            <div class="billing-summary-column">
+              <article class="glass-card highlight" style="position: sticky; top: 2.5rem;">
+                <h3 class="card-title">
+                  <svg viewBox="0 0 24 24"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4"/></svg>
+                  Agreement Print Options
+                </h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem;">
+                  Fill out the dynamic blanks inside Section 1, Section 2, and the Signatures blocks. Save the agreement details in the history ledger before printing.
+                </p>
+                
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  <button class="btn btn-primary" onclick="saveNewWarrantyAgreement()">
+                    <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+                    <span>Save to History Ledger</span>
+                  </button>
+                  <button class="btn btn-secondary" onclick="downloadAgreementPDF()" style="background: hsla(250, 95%, 68%, 0.15); border-color: var(--color-secondary); color: var(--text-main);">
+                    <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    Download Agreement PDF
+                  </button>
+                  <button class="btn btn-secondary" onclick="window.print()">
+                    <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4"/></svg>
+                    Print Agreement Document
+                  </button>
+                  <button class="btn btn-secondary" onclick="openShareModal('agreement')" style="background: hsla(142, 76%, 45%, 0.15); border-color: var(--color-stock); color: var(--text-main); width: 100%;">
+                    <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M8.684 10.742l4.632-2.316m0 7.148l-4.632-2.316M19 6a3 3 0 11-6 0 3 3 0 016 0zM6 18a3 3 0 11-6 0 3 3 0 016 0zm13-6a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Share Agreement
+                  </button>
+                  <button class="btn btn-secondary" onclick="resetAgreementFields()" style="border-color:hsl(0,60%,50%); color:hsl(0,70%,75%); background:rgba(255,80,80,0.05);">
+                    Reset Form
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Centered high-fidelity 6-Page Printable replica -->
+          <div class="agreement-viewer-container" style="margin-top: 2rem;">
+            <article class="agreement-paper" id="agreement-paper-element">
+              
+              <!-- PAGE 1: VEHICLE DETAILS & WARRANTY DURATIONS -->
+              <div class="agreement-page">
+                <h1 class="agreement-main-title">ADMS - Lakshmi E-BIKES</h1>
+                <h2 class="agreement-sub-title" id="rep-agr-sub-title">WARRANTY, GUARANTEE &amp; SERVICE TERMS &amp; CONDITIONS</h2>
+                <hr class="agreement-separator">
+                <h2 class="agreement-delivery-title">VEHICLE DELIVERY AGREEMENT</h2>
+                <p class="agreement-intro">
+                  This Terms &amp; Conditions document is issued at the time of vehicle delivery and must be signed by both the <strong>Seller (Showroom)</strong> and <strong>Buyer (Customer)</strong> for future reference and warranty/guarantee claims.
+                </p>
+
+                <h3 class="agreement-section-title">SECTION 1: VEHICLE DETAILS</h3>
+                <table class="agreement-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 45%;">Field</th>
+                      <th style="width: 55%;">Details to be Filled</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Vehicle Model Name</strong></td>
+                      <td class="font-bold print-line-td"><span id="rep-agr-model-name">___________________________</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Vehicle Serial Number</strong></td>
+                      <td class="monospace print-line-td"><span id="rep-agr-serial-no">___________________________</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Date of Delivery</strong></td>
+                      <td class="print-line-td"><span id="rep-agr-delivery-date">___________________________</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Odometer Reading at Delivery</strong></td>
+                      <td class="print-line-td"><span id="rep-agr-odometer">___________________________</span> KM</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Vehicle Color</strong></td>
+                      <td class="print-line-td"><span id="rep-agr-color">___________________________</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h3 class="agreement-section-title" id="rep-agr-sec2-title" style="margin-top: 2.25rem;">SECTION 2: WARRANTY &amp; GUARANTEE PERIOD</h3>
+                <p class="agreement-intro">Please select the applicable warranty and guarantee period based on your vehicle model:</p>
+                <table class="agreement-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 30%;">Coverage</th>
+                      <th style="width: 30%;">Duration</th>
+                      <th style="width: 40%;">Applicable Parts</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="rep-agr-warranty-row">
+                      <td><strong>Warranty</strong></td>
+                      <td class="text-center font-bold print-line-td"><span id="rep-agr-warranty-dur" style="border:none; padding:0; text-decoration:underline;">__</span> months</td>
+                      <td>Motor, Controller, Battery, Charger</td>
+                    </tr>
+                    <tr id="rep-agr-guarantee-row">
+                      <td><strong>Guarantee</strong></td>
+                      <td class="text-center font-bold print-line-td"><span id="rep-agr-guarantee-dur" style="border:none; padding:0; text-decoration:underline;">__</span> months</td>
+                      <td>Motor, Controller, Battery, Charger</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="agreement-notes-box">
+                  <strong>Note:</strong> Different ADMS e-bike models come with varying warranty and guarantee periods:
+                  <ul>
+                    <li>Some models: 6 months Warranty + 6 months Guarantee</li>
+                    <li>Some models: 1 year (12 months) Warranty + 1 year (12 months) Guarantee</li>
+                    <li>Some models: 1 year (12 months) Warranty + 2 years (24 months) Guarantee</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Page Break -->
+              <div class="html2pdf__page-break"></div>
+
+              <!-- PAGE 2: MAINTENANCE SERVICE SCHEDULE -->
+              <div class="agreement-page">
+                <p class="agreement-sticky-note">Please ensure the correct warranty and guarantee period is filled based on your vehicle model before signing.</p>
+                
+                <h3 class="agreement-section-title">SECTION 3: MAINTENANCE &amp; SERVICE SCHEDULE</h3>
+                <h4 class="agreement-sub-header">3.1 Free Service Benefits</h4>
+                <ul class="agreement-bullets">
+                  <li><strong>First 3 Services are completely FREE</strong> for all customers.</li>
+                  <li>Free services include labor, and all inspection charges.</li>
+                  <li>Only <strong>labor is free</strong> after 2 months of delivery; spare parts will be charged separately at actual spare price.</li>
+                </ul>
+
+                <h4 class="agreement-sub-header" style="margin-top: 1.5rem;">3.2 Mandatory Service Schedule</h4>
+                <p class="agreement-intro">Your vehicle <strong>must be serviced</strong> every:</p>
+                <ul class="agreement-bullets" style="margin-bottom: 1.5rem; font-weight:600;">
+                  <li>1,500 KM traveled, OR</li>
+                  <li>3 months from the date of delivery</li>
+                  <li>Whichever comes FIRST</li>
+                </ul>
+
+                <table class="agreement-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 30%;">Service Number</th>
+                      <th style="width: 20%;">Status</th>
+                      <th style="width: 50%;">Condition</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>1st Service</strong></td>
+                      <td class="text-center font-bold" style="color:var(--color-stock);">FREE</td>
+                      <td>After 1,500 KM or 3 months (whichever first)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>2nd Service</strong></td>
+                      <td class="text-center font-bold" style="color:var(--color-stock);">FREE</td>
+                      <td>After 3,000 KM or 6 months (whichever first)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>3rd Service</strong></td>
+                      <td class="text-center font-bold" style="color:var(--color-stock);">FREE</td>
+                      <td>After 4,500 KM or 9 months (whichever first)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>4th Service Onwards</strong></td>
+                      <td class="text-center font-bold" style="color:var(--color-sold);">PAID</td>
+                      <td>Charged based on service requirements and spare parts used</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h3 class="agreement-section-title" style="margin-top: 2.5rem;">SECTION 4: WARRANTY &amp; GUARANTEE COVERAGE</h3>
+                <h4 class="agreement-sub-header">4.1 Covered Components</h4>
+                <p class="agreement-intro">The warranty and guarantee cover <strong>4 critical parts only</strong>:</p>
+                <ol class="agreement-numbers">
+                  <li><strong>Motor</strong> - Complete motor assembly</li>
+                  <li><strong>Controller</strong> - Electronic controller unit</li>
+                  <li><strong>Battery</strong> - Lithium-ion battery pack</li>
+                  <li><strong>Charger</strong> - Original charging unit</li>
+                </ol>
+              </div>
+
+              <!-- Page Break -->
+              <div class="html2pdf__page-break"></div>
+
+              <!-- PAGE 3: COVERAGE DETAILS & Void CLAUSES -->
+              <div class="agreement-page">
+                <h4 class="agreement-sub-header">4.2 Coverage Details</h4>
+                <ul class="agreement-bullets">
+                  <li>Manufacturing defects in the above components will be repaired or replaced free of charge during the warranty/guarantee period.</li>
+                  <li>Replacement parts will be provided as per ADMS quality standards.</li>
+                  <li><strong>Labor charges are waived</strong> during the warranty/guarantee period for covered components.</li>
+                </ul>
+
+                <h3 class="agreement-section-title" style="margin-top: 2.25rem;">SECTION 5: SPARE PARTS POLICY</h3>
+                <h4 class="agreement-sub-header">5.1 Spare Parts After 2 Months of Delivery</h4>
+                <p class="agreement-intro">If any spare parts <strong>other than the 4 covered components</strong> (Motor, Controller, Battery, Charger) stop working or need replacement:</p>
+                <ul class="agreement-bullets">
+                  <li><strong>After 2 months of delivery:</strong> Parts will be charged based on the <strong>actual spare price</strong>.</li>
+                  <li><strong>Labor charges are FREE</strong> during the free service period (first 3 services).</li>
+                  <li>Examples of non-covered spare parts: Tires, Brakes, Brake Pads, Suspension components, Lights, Wiring, Connectors, etc.</li>
+                </ul>
+
+                <h4 class="agreement-sub-header" style="margin-top: 1.5rem;">5.2 Labor Charges Policy</h4>
+                <ul class="agreement-bullets">
+                  <li><strong>Free labor:</strong> During the first 3 free services and throughout the warranty/guarantee period for covered components.</li>
+                  <li><strong>Paid labor:</strong> After the 3 free services are exhausted, labor charges will apply as per the service center's standard rates.</li>
+                </ul>
+
+                <h3 class="agreement-section-title" style="margin-top: 2.25rem; color: #cc0000;">SECTION 6: IMPORTANT - WARRANTY &amp; GUARANTEE FORFEITURE CLAUSE</h3>
+                <h4 class="agreement-sub-header" style="color: #cc0000; font-weight:800; border:none; padding:0; margin-bottom: 0.5rem;">WARRANTY AND GUARANTEE WILL BE VOID IF:</h4>
+                <ol class="agreement-numbers text-danger-ol">
+                  <li><strong>Any scheduled service is missed or delayed</strong> - If the customer does not service the vehicle within the prescribed 1,500 KM / 3 months schedule (whichever comes first), the warranty and guarantee become <strong>NULL AND VOID</strong>.</li>
+                  <li><strong>Any free service is not availed</strong> - Skipping even one of the first 3 free services will result in <strong>forfeiture of all warranty and guarantee benefits</strong>.</li>
+                  <li><strong>Service done from unauthorized centers</strong> - Any servicing or repairs done outside of authorized ADMS service centers will <strong>void the warranty and guarantee</strong>.</li>
+                  <li><strong>Tampering with vehicle components</strong> - Any unauthorized modification, disassembly, or tampering with the vehicle will <strong>cancel all warranty and guarantee coverage</strong>.</li>
+                </ol>
+              </div>
+
+              <!-- Page Break -->
+              <div class="html2pdf__page-break"></div>
+
+              <!-- PAGE 4: RESPONSIBILITIES & EXCLUSIONS -->
+              <div class="agreement-page">
+                <ol class="agreement-numbers text-danger-ol" start="5">
+                  <li><strong>Improper usage</strong> - Misuse, overloading beyond capacity, or operation in extreme conditions will <strong>void coverage</strong>.</li>
+                  <li><strong>Battery misuse</strong> - Using non-original chargers or batteries will <strong>invalidate all warranty</strong>.</li>
+                </ol>
+                <p class="agreement-forfeit-box">
+                  Once warranty/guarantee is forfeited due to missed services, it CANNOT be restored. Regular service is MANDATORY to maintain coverage.
+                </p>
+
+                <h3 class="agreement-section-title" style="margin-top: 2.25rem;">SECTION 7: CUSTOMER RESPONSIBILITIES</h3>
+                <p class="agreement-intro">The customer agrees with:</p>
+                <ul class="agreement-bullets checklist-bullets">
+                  <li>✓ Follow the mandatory service schedule (every 1,500 KM or 3 months, whichever is earlier).</li>
+                  <li>✓ Get the vehicle serviced only at authorized ADMS service centers.</li>
+                  <li>✓ Use only original ADMS chargers and batteries.</li>
+                  <li>✓ Maintain the vehicle as per the user manual guidelines.</li>
+                  <li>✓ Keep the vehicle within permissible load limits.</li>
+                  <li>✓ Report any defects or issues to the authorized service center promptly.</li>
+                  <li>✓ Retain this signed document and service records for all warranty claims.</li>
+                </ul>
+
+                <h3 class="agreement-section-title" style="margin-top: 2.25rem;">SECTION 8: EXCLUSIONS (NOT COVERED UNDER WARRANTY/GUARANTEE)</h3>
+                <p class="agreement-intro">The following are <strong>NOT covered</strong> under warranty or guarantee:</p>
+                <ul class="agreement-bullets exclusion-bullets">
+                  <li>• Normal wear and tears (tires, brake pads, chains, etc.).</li>
+                  <li>• Cosmetic damage, scratches, or paint damage.</li>
+                  <li>• Damage due to accidents, collisions, or misuse.</li>
+                  <li>• Water damage or corrosion due to improper storage.</li>
+                  <li>• Electrical faults due to lightning or power surges.</li>
+                  <li>• Damage from unauthorized repairs or modifications.</li>
+                  <li>• Battery degradation beyond manufacturer specifications.</li>
+                  <li>• Lost or stolen parts or components.</li>
+                  <li>• Damage due to using incompatible accessories.</li>
+                </ul>
+              </div>
+
+              <!-- Page Break -->
+              <div class="html2pdf__page-break"></div>
+
+              <!-- PAGE 5: CLAIM PROCESS, GENERAL TERMS & SIGNATURE DETAILS -->
+              <div class="agreement-page">
+                <h3 class="agreement-section-title">SECTION 9: CLAIM PROCESS FOR WARRANTY/GUARANTEE</h3>
+                <p class="agreement-intro">To claim warranty or guarantee benefits:</p>
+                <ol class="agreement-numbers">
+                  <li><strong>Contact the authorized ADMS service center</strong> with your vehicle and this signed document.</li>
+                  <li><strong>Provide proof of purchase</strong> (original invoice/bill).</li>
+                  <li><strong>Present this signed Terms &amp; Conditions document</strong> showing your warranty/guarantee period.</li>
+                  <li><strong>Provide service history</strong> showing all scheduled services were completed on time.</li>
+                  <li>The service center will <strong>assess the defect</strong> and proceed with repair/replacement if eligible.</li>
+                  <li><strong>All claims must be made within the warranty/guarantee period</strong> - claims after expiry will not be entertained.</li>
+                </ol>
+
+                <h3 class="agreement-section-title" style="margin-top: 2rem;">SECTION 10: GENERAL TERMS</h3>
+                <ul class="agreement-bullets">
+                  <li>This agreement is <strong>valid only for the original purchaser</strong> (non-transferable).</li>
+                  <li>The customer must keep this document safe for future reference and claim processing.</li>
+                  <li>Any disputes will be resolved as per ADMS policies and applicable Indian laws.</li>
+                  <li>ADMS reserves the right to change warranty terms with prior notice.</li>
+                  <li>This document should be retained for the entire warranty/guarantee period.</li>
+                </ul>
+
+                <h3 class="agreement-section-title" style="margin-top: 2rem; border:none; padding-bottom:0;">AUTHORIZATION &amp; SIGNATURES</h3>
+                <p class="agreement-intro">By signing below, both the seller and buyer <strong>agree to all the terms and conditions</strong> mentioned in this document.</p>
+
+                <div style="margin-top: 1.5rem; border-top: 2px solid black; padding-top: 1.25rem;">
+                  <!-- Seller Showroom details -->
+                  <div class="agreement-sig-block">
+                    <h4 class="sig-block-title">SELLER (SHOWROOM) DETAILS</h4>
+                    <div class="sig-details-lines">
+                      <div>Showroom Name: <strong id="rep-agr-showroom-name">___________________________</strong></div>
+                      <div>Address: <span id="rep-agr-showroom-address">___________________________</span></div>
+                      <div>Authorized Representative: <span id="rep-agr-showroom-dealer">___________________________</span></div>
+                      <div>Contact Number: <span id="rep-agr-showroom-phone">___________________</span></div>
+                      <div id="rep-agr-showroom-email-row">Email Address: <span id="rep-agr-showroom-email">___________________</span></div>
+                      <div class="sig-sign-area">
+                        <div><div class="sig-dashed-line"></div>Signature</div>
+                        <div><div class="sig-dashed-line"></div>Date</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Page Break -->
+              <div class="html2pdf__page-break"></div>
+
+              <!-- PAGE 6: BUYER (CUSTOMER) DETAILS & IMPORTANT NOTES -->
+              <div class="agreement-page">
+                <!-- Seller styled Customer Details box -->
+                <div class="agreement-sig-block" style="margin-top: 1.5rem;">
+                  <h4 class="sig-block-title">BUYER (CUSTOMER) DETAILS</h4>
+                  <div class="sig-details-lines">
+                    <div>Customer Name: <strong id="rep-agr-cust-name-p6">___________________________</strong></div>
+                    <div>Address: <span id="rep-agr-cust-address-p6">___________________________</span></div>
+                    <div>Contact Number: <span id="rep-agr-cust-phone-p6">___________________</span></div>
+                    <div>Email Address: <span id="rep-agr-cust-email-p6">___________________</span></div>
+                    <div>ID Proof Type: <span id="rep-agr-cust-id-type-p6">___________________</span></div>
+                    <div>ID Number: <span id="rep-agr-cust-id-val-p6">___________________</span></div>
+                    <div class="sig-sign-area" style="margin-top: 2.5rem;">
+                      <div><div class="sig-dashed-line"></div>Customer Signature</div>
+                      <div><div class="sig-dashed-line"></div>Date</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <hr style="border: none; border-top: 2px solid black; margin: 2.5rem 0 2rem 0;">
+                
+                <h3 class="agreement-section-title" style="text-transform: uppercase; font-size: 1.25rem; border: none; padding: 0; color: black; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 1rem;">IMPORTANT NOTES FOR CUSTOMER:</h3>
+                
+                <ol style="margin-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem; font-size: 13.5px; line-height: 1.6; list-style-type: decimal; color: black;">
+                  <li><strong>Keep this document safe</strong> - You will need it for all warranty/guarantee claims</li>
+                  <li><strong>Maintain service records</strong> - Keep copies of all service receipts</li>
+                  <li><strong>Follow the service schedule strictly</strong> - Missing even one service voids your warranty</li>
+                  <li><strong>Contact authorized centers only</strong> - Service from unauthorized centers voids coverage</li>
+                  <li><strong>This is a legally binding agreement</strong> - Both parties must sign all pages</li>
+                </ol>
+                
+                <hr style="border: none; border-top: 2px solid black; margin: 3.5rem 0 1rem 0;">
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #000; font-weight: 600;">
+                  <div>Version: 1.0 | Effective Date: January 2026</div>
+                </div>
+                <div style="font-size: 12px; color: #000; font-weight: bold; margin-top: 0.5rem;">
+                  For any queries, contact your nearest ADMS Authorized Service Center
+                </div>
+              </div>
+
+            </article>
+          </div>
+        </div>
+
+        <!-- SUB-PANEL 2: AGREEMENT HISTORY JOURNAL TAB -->
+        <div id="warranty-history-panel" style="display: none;">
+          <article class="glass-card">
+            <div class="invoice-actions-row" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+              <h3 class="card-title" style="border:none; margin:0; padding:0;">
+                <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Warranty Agreements Ledger
+              </h3>
+              
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <input type="text" id="warranty-search-input" placeholder="Search by customer/chassis..." onkeyup="filterWarrantyHistoryTable()" style="max-width: 250px; height: 42px; font-size: 0.85rem; padding: 0 1rem; border-color: var(--border-glass);">
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table" id="warranty-history-table">
+                <thead>
+                  <tr>
+                    <th>Agreement ID</th>
+                    <th>Customer Name</th>
+                    <th>Chassis Number</th>
+                    <th>Vehicle Model</th>
+                    <th>Delivery Date</th>
+                    <th style="text-align: center;">Warranty (Mo)</th>
+                    <th style="text-align: center;">Guarantee (Mo)</th>
+                    <th style="text-align: center;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="warranty-history-tbody">
+                  <!-- Generated dynamically in app.js -->
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ TAB: QUOTATION & ESTIMATES MANAGER ============ -->
+      <section id="quotation-tab" class="tab-section">
+        <header class="content-header">
+          <h1>Quotation Manager</h1>
+          <p>Register E-Bike models for quotations &amp; view the full history of price estimates issued.</p>
+        </header>
+
+        <!-- Sub-tab switcher -->
+        <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+          <div class="switch-container" style="width:auto;">
+            <div class="switch-option active" id="qmgr-tab-catalog" onclick="switchQuotationManagerView('catalog')">E-Bike Models Catalog</div>
+            <div class="switch-option" id="qmgr-tab-history" onclick="switchQuotationManagerView('history')">Quotation History</div>
+          </div>
+        </div>
+
+        <!-- ===== CATALOG PANEL ===== -->
+        <div id="quotation-catalog-panel">
+          <div class="billing-layout">
+            <!-- Left Column: Add/Edit Model Form -->
+            <div class="billing-forms-column" style="flex: 1.1;">
+              <article class="glass-card form-group">
+                <h3 class="card-title" id="qmodel-form-title" style="color: var(--color-primary);">
+                  <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Register New Quotation Model
+                </h3>
+                
+                <input type="hidden" id="qmodel-id-edit">
+                
+                <div class="grid-2">
+                  <div class="form-group full-width">
+                    <label for="qmodel-name">Vehicle Model Name *</label>
+                    <input type="text" id="qmodel-name" placeholder="e.g. ADMS RIDER GREEN (60V 24AH)" onkeyup="updateQModelFormPreview()">
+                  </div>
+                  <div class="form-group">
+                    <label for="qmodel-base-price">Showroom Base Price (₹) *</label>
+                    <input type="number" id="qmodel-base-price" placeholder="0.00" step="0.01" min="0" onkeyup="updateQModelFormPreview()" onchange="updateQModelFormPreview()">
+                  </div>
+                  <div class="form-group">
+                    <label for="qmodel-gst-pct">GST Tax Rate *</label>
+                    <select id="qmodel-gst-pct" onchange="updateQModelFormPreview()">
+                      <option value="5" selected>5% (2.5% CGST + 2.5% SGST)</option>
+                      <option value="12">12% (6% CGST + 6% SGST)</option>
+                      <option value="18">18% (9% CGST + 9% SGST)</option>
+                      <option value="28">28% (14% CGST + 14% SGST)</option>
+                      <option value="0">0% Excluded</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="qmodel-hsn">HSN / SAC Code *</label>
+                    <input type="text" id="qmodel-hsn" value="8711" placeholder="e.g. 8711" onkeyup="updateQModelFormPreview()">
+                  </div>
+                  <div class="form-group" style="display: flex; align-items: flex-end;">
+                    <button type="button" class="btn btn-primary" id="qmodel-submit-btn" onclick="saveQuotationModel()" style="height: 42px; font-size: 0.85rem; width: 100%;">
+                      Register Model
+                    </button>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Quick Live Formula Estimation Preview -->
+              <article class="glass-card highlight" style="padding: 1.25rem;">
+                <h4 style="margin: 0 0 0.75rem; font-size: 0.85rem; color: var(--color-secondary); text-transform: uppercase; letter-spacing: 0.5px;">Live Tax Break-down Estimation</h4>
+                <div class="specs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
+                  <div style="padding: 0.5rem; border-radius: 6px; background: hsla(0,0%,100%,0.02); border: 1px solid var(--border-glass);">
+                    <div style="font-size: 0.68rem; color: var(--text-muted);">Base Cost</div>
+                    <strong style="color: var(--text-main);" id="lbl-qprev-base">₹ 0.00</strong>
+                  </div>
+                  <div style="padding: 0.5rem; border-radius: 6px; background: hsla(0,0%,100%,0.02); border: 1px solid var(--border-glass);">
+                    <div style="font-size: 0.68rem; color: var(--text-muted);">GST Tax (CGST + SGST)</div>
+                    <strong style="color: var(--color-primary);" id="lbl-qprev-tax">₹ 0.00</strong>
+                  </div>
+                  <div style="grid-column: span 2; padding: 0.6rem; border-radius: 6px; background: hsla(200, 100%, 50%, 0.05); border: 1px solid rgba(0, 176, 240, 0.2); text-align: center;">
+                    <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">TOTAL ESTIMATED ON-ROAD PRICE</div>
+                    <strong style="font-size: 1.15rem; color: #00b0f0; font-family: monospace;" id="lbl-qprev-total">₹ 0.00</strong>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Right Column: Models Ledger Table -->
+            <div class="billing-summary-column" style="flex: 1.4;">
+              <article class="glass-card" style="height: 100%; display: flex; flex-direction: column;">
+                <div class="invoice-actions-row" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                  <div style="display: flex; gap: 0.5rem; align-items: center; flex: 1; min-width: 200px;">
+                    <input type="text" id="qmodel-search-input" placeholder="Search catalog..." onkeyup="filterQuotationModelsCatalog()" style="max-width: 280px; height: 38px;">
+                  </div>
+
+                  <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <input type="file" id="qmodel-excel-file-input" accept=".csv, .xlsx, .xls" style="display: none;" onchange="importQuotationModelsExcel(event)">
+                    <button class="btn btn-secondary" onclick="document.getElementById('qmodel-excel-file-input').click()" style="width: auto; height: 38px; font-size: 0.78rem; padding: 0 0.75rem; border-color: var(--color-secondary);">
+                      Import Models Excel
+                    </button>
+                    <button class="btn btn-secondary" onclick="exportQuotationModelsExcel()" style="width: auto; height: 38px; font-size: 0.78rem; padding: 0 0.75rem; border-color: var(--color-primary);">
+                      Export Models Excel
+                    </button>
+                  </div>
+                </div>
+
+                <div class="table-responsive" style="flex: 1; overflow-y: auto;">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Vehicle Model Name</th>
+                        <th style="text-align: right;">Base Price</th>
+                        <th style="text-align: center;">GST Rate</th>
+                        <th style="text-align: center;">HSN Code</th>
+                        <th style="text-align: right;">Estimated Total</th>
+                        <th style="text-align: center; width: 140px;">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="qmodels-catalog-tbody">
+                      <!-- Loaded dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== HISTORY PANEL ===== -->
+        <div id="quotation-history-panel" style="display:none;">
+          <article class="glass-card">
+            <div class="invoice-actions-row" style="margin-bottom:1.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
+              <div style="display:flex; gap:0.5rem; align-items:center; flex:1; min-width:200px;">
+                <input type="text" id="qhist-search-input" placeholder="Search by customer, quotation no..." onkeyup="renderQuotationHistoryTable()" style="max-width:320px; height:38px;">
+              </div>
+              <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                <button class="btn btn-secondary" onclick="exportQuotationHistoryExcel()" style="width:auto; height:38px; font-size:0.78rem; padding:0 0.85rem; border-color:var(--color-primary);">
+                  Export History Excel
+                </button>
+                <button class="btn btn-secondary" onclick="switchTab('new-billing-tab')" style="width:auto; height:38px; font-size:0.78rem; padding:0 0.85rem; border-color:var(--color-secondary);">
+                  + Create New Quotation
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Quotation No</th>
+                    <th>Date</th>
+                    <th>Customer Name</th>
+                    <th>Mobile</th>
+                    <th>Vehicle Model</th>
+                    <th style="text-align:right;">Base Price</th>
+                    <th style="text-align:right;">GST</th>
+                    <th style="text-align:right;">Grand Total</th>
+                    <th style="text-align:center; width:200px;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="qhist-tbody">
+                  <!-- Loaded dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+      </section>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+
+
+  <!-- ============ FIELD MANAGER MODAL ============ -->
+  <div id="field-manager-modal" style="display:none;" onclick="if(event.target===this)closeFieldManager()">
+    <div class="fm-modal-panel">
+      <!-- Header -->
+      <div class="fm-modal-header">
+        <div>
+          <h2 class="fm-modal-title">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+            Customize Fields
+          </h2>
+          <p class="fm-modal-sub">Add, rename, reorder, show/hide fields for each page. Click any label to rename it.</p>
+        </div>
+        <button class="fm-close-btn" onclick="closeFieldManager()" title="Close">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.5;"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Page Tabs -->
+      <div class="fm-tabs">
+        <button class="fm-tab-btn active" data-page="purchase" onclick="switchFieldManagerTab('purchase')">
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          Purchase Form
+        </button>
+        <button class="fm-tab-btn" data-page="stock" onclick="switchFieldManagerTab('stock')">
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          Stock Columns
+        </button>
+        <button class="fm-tab-btn" data-page="sales" onclick="switchFieldManagerTab('sales')">
+          <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          Sales Columns
+        </button>
+      </div>
+
+      <!-- Legend -->
+      <div class="fm-legend">
+        <span><svg viewBox="0 0 24 24" style="width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;"><path d="M5 15l7-7 7 7"/></svg> Move</span>
+        <span style="cursor:pointer;">✏️ Click label to rename</span>
+        <span>Toggle = show/hide</span>
+        <span style="color:hsl(0,70%,65%);">🗑 Delete custom fields only</span>
+      </div>
+
+      <!-- Field List -->
+      <div id="fm-fields-list" class="fm-fields-list">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Add New Field -->
+      <div class="fm-add-section">
+        <h4 class="fm-add-title">
+          <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.5;"><path d="M12 4v16m8-8H4"/></svg>
+          Add New Custom Field
+        </h4>
+        <div class="fm-add-row">
+          <input type="text" id="fm-new-label" placeholder="Field label (e.g. Insurance No)" class="fm-new-input" onkeydown="if(event.key==='Enter')addCustomField()">
+          <select id="fm-new-type" class="fm-new-select">
+            <option value="text">Text</option>
+            <option value="number">Number</option>
+            <option value="date">Date</option>
+            <option value="textarea">Text Area</option>
+          </select>
+          <label class="fm-req-label">
+            <input type="checkbox" id="fm-new-required"> Required
+          </label>
+          <button class="btn btn-primary fm-add-btn" onclick="addCustomField()">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.5;"><path d="M12 4v16m8-8H4"/></svg>
+            Add Field
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer Actions -->
+      <div class="fm-modal-footer">
+        <button class="btn btn-secondary" onclick="resetFieldsToDefault()" style="width:auto;font-size:0.82rem;color:hsl(0,70%,65%);border-color:hsl(0,60%,50%);">
+          Reset to Defaults
+        </button>
+        <button class="btn btn-primary" onclick="closeFieldManager()" style="width:auto;min-width:160px;">
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.5;"><path d="M5 13l4 4L19 7"/></svg>
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOM CONFIRM MODAL -->
+  <div id="custom-confirm-modal" class="modal-overlay" style="display:none;">
+    <div class="custom-confirm-panel glass-card">
+      <div class="modal-header-section">
+        <div class="modal-header-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        </div>
+        <h3 id="custom-confirm-title">Confirm Billing Sale</h3>
+      </div>
+      <div class="modal-body-section">
+        <p id="custom-confirm-message"></p>
+      </div>
+      <div class="modal-footer-section">
+        <button class="btn btn-secondary" id="custom-confirm-cancel-btn">Cancel</button>
+        <button class="btn btn-primary" id="custom-confirm-approve-btn">Confirm &amp; Print</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLLECT DUE MODAL -->
+  <div id="collect-due-modal" class="modal-overlay" style="display:none;">
+    <div class="custom-confirm-panel glass-card" style="max-width: 450px;">
+      <div class="modal-header-section">
+        <div class="modal-header-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--color-stock);">
+          <svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Record Due Payment</h3>
+      </div>
+      <div class="modal-body-section" style="margin-bottom: 1.25rem;">
+        <div style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom: 1rem;">
+          <div><strong>Invoice No:</strong> <span id="due-modal-inv-no" style="font-family:monospace; font-weight:700;">-</span></div>
+          <div><strong>Customer:</strong> <span id="due-modal-cust-name">-</span></div>
+          <div><strong>Total Amount:</strong> <span id="due-modal-total-amt">-</span></div>
+          <div><strong>Current Balance Due:</strong> <span id="due-modal-balance-due" style="color:hsl(0, 85%, 60%); font-weight:700;">-</span></div>
+        </div>
+        
+        <div class="form-group">
+          <label for="due-pay-amount">Payment Amount Received (₹) *</label>
+          <input type="number" id="due-pay-amount" step="0.01" min="0.01" placeholder="Enter amount to pay" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="due-pay-type">Payment Type *</label>
+          <select id="due-pay-type">
+            <option value="CASH">CASH</option>
+            <option value="UPI">UPI</option>
+            <option value="BANK TRANSFER">BANK TRANSFER</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer-section">
+        <button class="btn btn-secondary" onclick="closeCollectDueModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="submitCollectedPayment()">Record Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPLIER DETAILS MODAL -->
+  <div id="supplier-details-modal" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeSupplierDetailsModal()">
+    <div class="custom-confirm-panel glass-card" style="max-width: 450px;">
+      <div class="modal-header-section">
+        <div class="modal-header-icon" style="background: rgba(99, 102, 241, 0.15); color: var(--color-primary);">
+          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        </div>
+        <h3>Supplier Profile</h3>
+      </div>
+      <div class="modal-body-section" style="margin-bottom: 1.25rem;">
+        <div style="display:flex; flex-direction:column; gap:0.75rem; font-size: 0.9rem; text-align: left;">
+          <div><strong>Supplier Name:</strong> <span id="sup-modal-name">-</span></div>
+          <div><strong>Address:</strong> <span id="sup-modal-address">-</span></div>
+          <div><strong>GSTIN:</strong> <span id="sup-modal-gstin">-</span></div>
+          <div><strong>Mobile No:</strong> <span id="sup-modal-phone">-</span></div>
+          <div><strong>Email ID:</strong> <span id="sup-modal-email">-</span></div>
+        </div>
+      </div>
+      <div class="modal-footer-section">
+        <button class="btn btn-secondary" onclick="closeSupplierDetailsModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARE MODAL -->
+  <div id="share-modal" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeShareModal()">
+    <div class="custom-confirm-panel glass-card" style="max-width: 450px;">
+      <div class="modal-header-section">
+        <div class="modal-header-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--color-stock);">
+          <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M8.684 10.742l4.632-2.316m0 7.148l-4.632-2.316M19 6a3 3 0 11-6 0 3 3 0 016 0zM6 18a3 3 0 11-6 0 3 3 0 016 0zm13-6a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3>Share Document</h3>
+      </div>
+      <div class="modal-body-section" style="margin-bottom: 1.5rem; text-align: left;">
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">Select your preferred sharing channel below. This will pre-fill invoice particulars dynamically.</p>
+        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <button class="btn btn-primary" id="share-pdf-btn" onclick="shareInvoicePDF()" style="background: var(--color-primary); color: white; border: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 42px;">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Share PDF Copy
+          </button>
+          
+          <button class="btn" onclick="shareOnWhatsApp()" style="background: #25d366; color: white; border: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 42px;">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;"><path d="M12.031 2a9.98 9.98 0 00-9.98 9.98c0 1.84.5 3.568 1.375 5.068L2.031 22l5.125-1.344a9.94 9.94 0 004.875 1.275 9.98 9.98 0 009.98-9.98 9.98 9.98 0 00-9.98-9.98zm-1.094 3.75c.219 0 .438.094.594.281l1.219 1.469c.188.219.188.531-.031.75l-.469.469c-.094.094-.125.219-.094.344.188.5.531 1.031.969 1.469s.969.781 1.469.969c.125.031.25 0 .344-.094l.469-.469c.219-.219.531-.219.75-.031l1.469 1.219c.188.156.281.375.281.594 0 .438-.344.875-.781.875-.375 0-.969-.219-1.594-.5-1.281-.594-2.312-1.625-2.906-2.906-.281-.625-.5-1.219-.5-1.594 0-.438.438-.781.875-.781z"/></svg>
+            Share on WhatsApp
+          </button>
+          
+          <button class="btn" onclick="shareViaEmail()" style="background: #ea4335; color: white; border: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 42px;">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Share via Email ID
+          </button>
+          
+          <button class="btn btn-secondary" onclick="shareCopyLink()" style="font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 42px; border-color: var(--border-glass-hover); color: var(--text-main);">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5;"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m-6 4h10m-3-3l3 3-3 3"/></svg>
+            Copy Invoice Summary
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer-section">
+        <button class="btn btn-secondary" onclick="closeShareModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD KPI DETAIL EXPLORER MODAL -->
+  <div id="dashboard-detail-modal" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeDashboardDetailModal()">
+    <div class="custom-confirm-panel glass-card" style="max-width: 950px; width: 92%; border: 1px solid var(--neon-cyan); box-shadow: 0 0 35px var(--neon-cyan-glow);">
+      <div class="modal-header-section" style="border-bottom: 1px solid var(--border-glass); padding-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+        <div class="modal-header-icon" id="dash-detail-icon" style="background: rgba(0, 240, 255, 0.15); color: var(--neon-cyan); margin: 0; min-width: 48px; min-height: 48px; border: 1px solid rgba(0, 240, 255, 0.3);">
+          <!-- Loaded dynamically -->
+        </div>
+        <div style="text-align: left; flex: 1;">
+          <h3 id="dash-detail-title" style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; text-shadow: 0 0 8px var(--neon-cyan-glow); color: var(--neon-cyan);">KPI Statistics Explorer</h3>
+          <p id="dash-detail-subtitle" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.15rem;"></p>
+        </div>
+      </div>
+      <div class="modal-body-section" style="margin-top: 1.5rem; margin-bottom: 1.5rem; max-height: 460px; overflow-y: auto; padding-right: 0.5rem;">
+        <div class="table-responsive" id="dash-detail-table-container">
+          <!-- Loaded dynamically in app.js -->
+        </div>
+      </div>
+      <div class="modal-footer-section" style="border-top: 1px solid var(--border-glass); padding-top: 1rem; display: flex; justify-content: flex-end;">
+        <button class="btn btn-secondary" onclick="closeDashboardDetailModal()" style="border-color: var(--neon-cyan); color: var(--text-main); font-weight: 700; box-shadow: 0 0 8px rgba(0, 240, 255, 0.1);">Close Explorer</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

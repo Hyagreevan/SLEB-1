@@ -1,0 +1,1002 @@
+{
+  "lastUpdated": 1780294733958,
+  "dealership": {
+    "brandName": "ADMS e BIKES",
+    "legalName": "SRI LAKSHMI e BIKES",
+    "address1": "sgf",
+    "address2": "sadf",
+    "phone": "994465926",
+    "gstin": "9841119",
+    "bankName": "safd",
+    "bankAcc": "asfas",
+    "bankIfsc": "asdf",
+    "tc1": "afd",
+    "tc2": "asdf"
+  },
+  "purchases": [
+    {
+      "billNo": "ADMS-PUR-2026-0081",
+      "date": "2026-04-01",
+      "supplier": "ADMS Motors India Pvt Ltd",
+      "model": "RIDER WHITE(60V 26AH)",
+      "chassis": "R6VA0130OSL170009",
+      "motor": "GEMLDM20251010066",
+      "battery": "BOBF75835",
+      "charger": "BOBF75835-CH",
+      "hsn": "871190",
+      "costPrice": 38000,
+      "sellingPrice": 44761.9
+    },
+    {
+      "billNo": "ADMS-PUR-2026-0082",
+      "date": "2026-04-05",
+      "supplier": "ADMS Motors India Pvt Ltd",
+      "model": "RIDER RED(60V 30AH)",
+      "chassis": "R6VA0130OSL170020",
+      "motor": "GEMLDM20251010077",
+      "battery": "BOBF75842",
+      "charger": "BOBF75842-CH",
+      "hsn": "871190",
+      "costPrice": 40000,
+      "sellingPrice": 46990
+    },
+    {
+      "billNo": "ADMS-PUR-2026-0083",
+      "date": "2026-04-10",
+      "supplier": "ADMS Motors India Pvt Ltd",
+      "model": "SPORT BLUE(72V 32AH)",
+      "chassis": "R6VA0130OSL170055",
+      "motor": "GEMLDM20251212099",
+      "battery": "BOBF75910",
+      "charger": "BOBF75910-CH",
+      "hsn": "871190",
+      "costPrice": 45000,
+      "sellingPrice": 52380.95
+    },
+    {
+      "billNo": "1",
+      "date": "2026-09-01",
+      "supplier": "SRI LAKSHMI VENKATESWARA MOTORS",
+      "model": "RIDER GREEN(60V 24AH)",
+      "chassis": "ADMS202507F3716",
+      "motor": "CL52A1133",
+      "battery": "BOBE70044",
+      "charger": "BOBE70044-CH",
+      "hsn": "871190",
+      "costPrice": 42856,
+      "sellingPrice": 42856
+    },
+    {
+      "billNo": "1",
+      "date": "2026-09-01",
+      "supplier": "SRI LAKSHMI VENKATESWARA MOTORS",
+      "model": "RIDER GREEN(60V 24AH)",
+      "chassis": "ADMS202507F3755",
+      "motor": "CL52A1256",
+      "battery": "BOBE69998",
+      "charger": "BOBE69998-CH",
+      "hsn": "871190",
+      "costPrice": 42856,
+      "sellingPrice": 42856
+    },
+    {
+      "billNo": "1",
+      "date": "2026-09-01",
+      "supplier": "SRI LAKSHMI VENKATESWARA MOTORS",
+      "model": "RIDER GREEN(60V 24AH)",
+      "chassis": "ADMS202507F3674",
+      "motor": "CL52A1319",
+      "battery": "BOBE70011",
+      "charger": "BOBE70011-CH",
+      "hsn": "871190",
+      "costPrice": 42856,
+      "sellingPrice": 42856
+    }
+  ],
+  "inventory": [
+    {
+      "model": "RIDER WHITE(60V 26AH)",
+      "chassis": "R6VA0130OSL170009",
+      "motor": "GEMLDM20251010066",
+      "battery": "BOBF75835",
+      "charger": "BOBF75835-CH",
+      "hsn": "871190",
+      "basePrice": 44761.9,
+      "costPrice": 38000,
+      "status": "SOLD"
+    },
+    {
+      "model": "RIDER RED(60V 30AH)",
+      "chassis": "R6VA0130OSL170020",
+      "motor": "GEMLDM20251010077",
+      "battery": "BOBF75842",
+      "charger": "BOBF75842-CH",
+      "hsn": "871190",
+      "basePrice": 46990,
+      "costPrice": 40000,
+      "status": "SOLD"
+    },
+    {
+      "model": "SPORT BLUE(72V 32AH)",
+      "chassis": "R6VA0130OSL170055",
+      "motor": "GEMLDM20251212099",
+      "battery": "BOBF75910",
+      "charger": "BOBF75910-CH",
+      "hsn": "871190",
+      "basePrice": 52380.95,
+      "costPrice": 45000,
+      "status": "STOCK"
+    },
+    {
+      "model": "RIDER GREEN(60V 24AH)",
+      "chassis": "ADMS202507F3716",
+      "motor": "CL52A1133",
+      "battery": "BOBE70044",
+      "charger": "BOBE70044-CH",
+      "hsn": "871190",
+      "basePrice": 42856,
+      "costPrice": 42856,
+      "status": "STOCK"
+    },
+    {
+      "model": "RIDER GREEN(60V 24AH)",
+      "chassis": "ADMS202507F3755",
+      "motor": "CL52A1256",
+      "battery": "BOBE69998",
+      "charger": "BOBE69998-CH",
+      "hsn": "871190",
+      "basePrice": 42856,
+      "costPrice": 42856,
+      "status": "STOCK"
+    },
+    {
+      "model": "RIDER GREEN(60V 24AH)",
+      "chassis": "ADMS202507F3674",
+      "motor": "CL52A1319",
+      "battery": "BOBE70011",
+      "charger": "BOBE70011-CH",
+      "hsn": "871190",
+      "basePrice": 42856,
+      "costPrice": 42856,
+      "status": "STOCK"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "18",
+      "docType": "invoice",
+      "taxMode": "intrastate",
+      "date": "10-04-26",
+      "paymentType": "CASH",
+      "refNo": "NON REG",
+      "billCategory": "bike",
+      "customer": {
+        "name": "PRABHU EBikes",
+        "phone": "9441008620",
+        "address": "1A1-1025,VELKUR,\nVELKUR GRAM PANCHAYATH,\nGANGADHARA NELLORE,\nCHITTOOR, CHITTOOR DISTRICT,\nANDHRA PRADESH-517125",
+        "gstin": "37AGUPJ6908J1ZP"
+      },
+      "vehicle": {
+        "model": "RIDER WHITE(60V 26AH)",
+        "chassis": "R6VA0130OSL170009",
+        "motor": "GEMLDM20251010066",
+        "battery": "BOBF75835",
+        "charger": "BOBF75835-CH",
+        "hsn": "871190",
+        "basePrice": 44761.9,
+        "costPrice": 38000
+      },
+      "financials": {
+        "base": 44761.9,
+        "cgst": 1119.05,
+        "sgst": 1119.05,
+        "igst": 0,
+        "total": 47000,
+        "paid": 47000,
+        "balance": 0
+      }
+    },
+    {
+      "id": "19",
+      "docType": "invoice",
+      "taxMode": "intrastate",
+      "date": "2026-05-31",
+      "paymentType": "CASH",
+      "refNo": "NON REG",
+      "billCategory": "bike",
+      "customer": {
+        "name": "PRABHU EBikes",
+        "phone": "9441008620",
+        "address": "1A1-1025,VELKUR,\nVELKUR GRAM PANCHAYATH,\nGANGADHARA NELLORE,\nCHITTOOR, CHITTOOR DISTRICT,\nANDHRA PRADESH-517125",
+        "gstin": "37AGUPJ6908J1ZP",
+        "email": ""
+      },
+      "printOptions": {
+        "address": true,
+        "phone": true,
+        "gstin": true,
+        "email": true
+      },
+      "idDetails": {
+        "active": false,
+        "idNo": "",
+        "cost": 0,
+        "treatment": "add"
+      },
+      "vehicle": {
+        "model": "RIDER RED(60V 30AH)",
+        "chassis": "R6VA0130OSL170020",
+        "motor": "GEMLDM20251010077",
+        "battery": "BOBF75842",
+        "charger": "BOBF75842-CH",
+        "hsn": "871190",
+        "basePrice": 46990,
+        "costPrice": 40000,
+        "status": "STOCK"
+      },
+      "spares": [],
+      "labor": 0,
+      "financials": {
+        "base": 46990,
+        "cgst": 1174.75,
+        "sgst": 1174.75,
+        "igst": 0,
+        "total": 49339.5,
+        "paid": 0,
+        "balance": 49339.5,
+        "mergedOverdue": 0
+      }
+    },
+    {
+      "id": "QT-0001",
+      "docType": "quotation",
+      "taxMode": "intrastate",
+      "date": "2026-05-31",
+      "paymentType": "CASH",
+      "refNo": "NON REG",
+      "billCategory": "bike",
+      "customer": {
+        "name": "ASFDS",
+        "phone": "7825971917",
+        "address": "ADF",
+        "gstin": "",
+        "email": "hyagreevangovindaraj@gmail.com"
+      },
+      "printOptions": {
+        "address": true,
+        "phone": true,
+        "gstin": true,
+        "email": true
+      },
+      "idDetails": {
+        "active": false,
+        "idNo": "",
+        "cost": 0,
+        "treatment": "add"
+      },
+      "vehicle": {
+        "model": "ADMS RIDER (60V 26AH)",
+        "chassis": "N/A",
+        "motor": "N/A",
+        "battery": "N/A",
+        "charger": "N/A",
+        "hsn": "871190",
+        "basePrice": 63809.52,
+        "gstPct": 5
+      },
+      "spares": [],
+      "labor": 0,
+      "financials": {
+        "base": 63809.52,
+        "cgst": 1595.24,
+        "sgst": 1595.24,
+        "igst": 0,
+        "total": 67000,
+        "paid": 0,
+        "balance": 67000,
+        "mergedOverdue": 0
+      }
+    },
+    {
+      "id": "QT-0002",
+      "docType": "quotation",
+      "taxMode": "intrastate",
+      "date": "2026-05-23",
+      "paymentType": "CASH",
+      "refNo": "NON REG",
+      "billCategory": "bike",
+      "customer": {
+        "name": "ask",
+        "phone": "7825971917",
+        "address": "sdfgh",
+        "gstin": "",
+        "email": ""
+      },
+      "printOptions": {
+        "address": true,
+        "phone": true,
+        "gstin": true,
+        "email": true
+      },
+      "idDetails": {
+        "active": false,
+        "idNo": "",
+        "cost": 0,
+        "treatment": "add"
+      },
+      "vehicle": {
+        "model": "ADMS RIDER",
+        "chassis": "N/A",
+        "motor": "N/A",
+        "battery": "N/A",
+        "charger": "N/A",
+        "hsn": "871190",
+        "basePrice": 63809.52,
+        "gstPct": 5
+      },
+      "items": [
+        {
+          "modelName": "ADMS RIDER",
+          "qty": 1,
+          "rate": 63809.52
+        }
+      ],
+      "spares": [],
+      "labor": 0,
+      "financials": {
+        "base": 63809.52,
+        "cgst": 1595.24,
+        "sgst": 1595.24,
+        "igst": 0,
+        "total": 67000,
+        "paid": 0,
+        "balance": 67000,
+        "mergedOverdue": 0
+      }
+    },
+    {
+      "id": "QT-0003",
+      "docType": "quotation",
+      "taxMode": "intrastate",
+      "date": "2026-05-31",
+      "paymentType": "CASH",
+      "refNo": "NON REG",
+      "billCategory": "bike",
+      "customer": {
+        "name": "ASE",
+        "phone": "7825971917",
+        "address": "SB",
+        "gstin": "",
+        "email": ""
+      },
+      "printOptions": {
+        "address": true,
+        "phone": true,
+        "gstin": true,
+        "email": true
+      },
+      "idDetails": {
+        "active": false,
+        "idNo": "",
+        "cost": 0,
+        "treatment": "add"
+      },
+      "vehicle": {
+        "model": "ADMS RIDER (60V 26AH)",
+        "chassis": "N/A",
+        "motor": "N/A",
+        "battery": "N/A",
+        "charger": "N/A",
+        "hsn": "8711",
+        "basePrice": 63809.52,
+        "gstPct": 5
+      },
+      "items": [
+        {
+          "modelName": "ADMS RIDER (60V 26AH)",
+          "qty": 1,
+          "rate": 63809.52
+        }
+      ],
+      "spares": [],
+      "labor": 0,
+      "financials": {
+        "base": 63809.52,
+        "cgst": 1595.24,
+        "sgst": 1595.24,
+        "igst": 0,
+        "total": 67000,
+        "paid": 0,
+        "balance": 67000,
+        "mergedOverdue": 0
+      }
+    },
+    {
+      "id": "QT-0004",
+      "docType": "quotation",
+      "taxMode": "intrastate",
+      "date": "2026-05-31",
+      "paymentType": "CASH",
+      "refNo": "NON REG",
+      "billCategory": "bike",
+      "customer": {
+        "name": "SKY",
+        "phone": "7825971917",
+        "address": "ADF",
+        "gstin": "",
+        "email": "hyagreevangovindaraj@gmail.com"
+      },
+      "printOptions": {
+        "address": true,
+        "phone": true,
+        "gstin": true,
+        "email": true
+      },
+      "idDetails": {
+        "active": false,
+        "idNo": "",
+        "cost": 0,
+        "treatment": "add"
+      },
+      "vehicle": {
+        "model": "ADMS RIDER (60V 26AH)",
+        "chassis": "N/A",
+        "motor": "N/A",
+        "battery": "N/A",
+        "charger": "N/A",
+        "hsn": "8711",
+        "basePrice": 63809.52,
+        "gstPct": 5
+      },
+      "items": [
+        {
+          "modelName": "ADMS RIDER (60V 26AH)",
+          "qty": 1,
+          "rate": 63809.52
+        }
+      ],
+      "spares": [],
+      "labor": 0,
+      "financials": {
+        "base": 63809.52,
+        "cgst": 1595.24,
+        "sgst": 1595.24,
+        "igst": 0,
+        "total": 67000,
+        "paid": 0,
+        "balance": 67000,
+        "mergedOverdue": 0
+      }
+    }
+  ],
+  "spares": [
+    {
+      "sku": "SL-BS-001",
+      "name": "Brake Shoe Set",
+      "hsn": "871410",
+      "costPrice": 180,
+      "sellingPrice": 280,
+      "qty": 15,
+      "minLevel": 5
+    },
+    {
+      "sku": "SL-TH-002",
+      "name": "Throttle Assembly (Accelerator)",
+      "hsn": "871410",
+      "costPrice": 320,
+      "sellingPrice": 520,
+      "qty": 7,
+      "minLevel": 3
+    },
+    {
+      "sku": "SL-CH-003",
+      "name": "Lithium Smart Charger 60V 4A",
+      "hsn": "850440",
+      "costPrice": 1400,
+      "sellingPrice": 2200,
+      "qty": 4,
+      "minLevel": 2
+    },
+    {
+      "sku": "SL-BT-004",
+      "name": "LED Digital Speedometer Panel",
+      "hsn": "871410",
+      "costPrice": 450,
+      "sellingPrice": 750,
+      "qty": 1,
+      "minLevel": 3
+    }
+  ],
+  "services": [
+    {
+      "id": "SL-SER-1001",
+      "invoiceNo": "18",
+      "chassis": "R6VA0130OSL170009",
+      "custName": "PRABHU EBikes",
+      "date": "2026-05-10",
+      "serviceCount": "1st Service",
+      "odometer": 1050,
+      "spares": [
+        {
+          "sku": "SL-BS-001",
+          "name": "Brake Shoe Set",
+          "qty": 1,
+          "rate": 280,
+          "amount": 280
+        }
+      ],
+      "sparesCost": 280,
+      "laborCharges": 350,
+      "totalBill": 630
+    }
+  ],
+  "warrantyAgreements": [],
+  "quotations": [
+    {
+      "id": "QT-0001",
+      "date": "2026-05-31",
+      "customer": {
+        "name": "ASFDS",
+        "phone": "7825971917",
+        "address": "ADF",
+        "gstin": "",
+        "email": "hyagreevangovindaraj@gmail.com"
+      },
+      "taxMode": "intrastate",
+      "items": [
+        {
+          "modelName": "ADMS RIDER (60V 26AH)",
+          "qty": 1
+        }
+      ],
+      "financials": {
+        "base": 63809.52,
+        "cgst": 1595.24,
+        "sgst": 1595.24,
+        "igst": 0,
+        "total": 67000,
+        "paid": 0,
+        "balance": 67000,
+        "mergedOverdue": 0
+      }
+    },
+    {
+      "id": "QT-0002",
+      "date": "2026-05-23",
+      "customer": {
+        "name": "ask",
+        "phone": "7825971917",
+        "address": "sdfgh",
+        "gstin": "",
+        "email": ""
+      },
+      "taxMode": "intrastate",
+      "items": [
+        {
+          "modelName": "ADMS RIDER",
+          "qty": 1
+        }
+      ],
+      "financials": {
+        "base": 63809.52,
+        "cgst": 1595.24,
+        "sgst": 1595.24,
+        "igst": 0,
+        "total": 67000,
+        "paid": 0,
+        "balance": 67000,
+        "mergedOverdue": 0
+      }
+    },
+    {
+      "id": "QT-0003",
+      "date": "2026-05-31",
+      "customer": {
+        "name": "ASE",
+        "phone": "7825971917",
+        "address": "SB",
+        "gstin": "",
+        "email": ""
+      },
+      "taxMode": "intrastate",
+      "items": [
+        {
+          "modelName": "ADMS RIDER (60V 26AH)",
+          "qty": 1
+        }
+      ],
+      "financials": {
+        "base": 63809.52,
+        "cgst": 1595.24,
+        "sgst": 1595.24,
+        "igst": 0,
+        "total": 67000,
+        "paid": 0,
+        "balance": 67000,
+        "mergedOverdue": 0
+      }
+    },
+    {
+      "id": "QT-0004",
+      "date": "2026-05-31",
+      "customer": {
+        "name": "SKY",
+        "phone": "7825971917",
+        "address": "ADF",
+        "gstin": "",
+        "email": "hyagreevangovindaraj@gmail.com"
+      },
+      "taxMode": "intrastate",
+      "items": [
+        {
+          "modelName": "ADMS RIDER (60V 26AH)",
+          "qty": 1
+        }
+      ],
+      "financials": {
+        "base": 63809.52,
+        "cgst": 1595.24,
+        "sgst": 1595.24,
+        "igst": 0,
+        "total": 67000,
+        "paid": 0,
+        "balance": 67000,
+        "mergedOverdue": 0
+      }
+    }
+  ],
+  "customFields": {
+    "purchase": [
+      {
+        "id": "p_billno",
+        "label": "Bill / Invoice No",
+        "key": "billNo",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 0
+      },
+      {
+        "id": "p_supplier",
+        "label": "Supplier Name",
+        "key": "supplier",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 1
+      },
+      {
+        "id": "p_date",
+        "label": "Purchase Date",
+        "key": "date",
+        "type": "date",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 2
+      },
+      {
+        "id": "p_model",
+        "label": "E-Bike Model Name",
+        "key": "model",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 3
+      },
+      {
+        "id": "p_chassis",
+        "label": "Chassis Number",
+        "key": "chassis",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 4
+      },
+      {
+        "id": "p_motor",
+        "label": "Motor Number",
+        "key": "motor",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 5
+      },
+      {
+        "id": "p_battery",
+        "label": "Battery Number",
+        "key": "battery",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 6
+      },
+      {
+        "id": "p_charger",
+        "label": "Charger Number",
+        "key": "charger",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 7
+      },
+      {
+        "id": "p_hsn",
+        "label": "HSN Code",
+        "key": "hsn",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 8
+      },
+      {
+        "id": "p_costprice",
+        "label": "Purchase Price (Cost)",
+        "key": "costPrice",
+        "type": "number",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 9
+      },
+      {
+        "id": "p_sellprice",
+        "label": "Retail Base Rate (Selling)",
+        "key": "sellingPrice",
+        "type": "number",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 10
+      },
+      {
+        "id": "p_supplier_address",
+        "label": "Supplier Address",
+        "key": "supplierAddress",
+        "type": "textarea",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 11
+      },
+      {
+        "id": "p_supplier_gstin",
+        "label": "Supplier GSTIN",
+        "key": "supplierGstin",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 12
+      },
+      {
+        "id": "p_supplier_phone",
+        "label": "Supplier Mobile No",
+        "key": "supplierPhone",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 13
+      },
+      {
+        "id": "p_supplier_email",
+        "label": "Supplier Email ID",
+        "key": "supplierEmail",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 14
+      },
+      {
+        "id": "p_vehicle_gst",
+        "label": "Vehicle GST %",
+        "key": "vehicleGst",
+        "type": "number",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 15
+      },
+      {
+        "id": "p_discount_pct",
+        "label": "Discount %",
+        "key": "discountPct",
+        "type": "number",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 16
+      },
+      {
+        "id": "p_discount_amt",
+        "label": "Discount Amount (₹)",
+        "key": "discountAmt",
+        "type": "number",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 17
+      }
+    ],
+    "stock": [
+      {
+        "id": "s_model",
+        "label": "Model Name",
+        "key": "model",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 0
+      },
+      {
+        "id": "s_chassis",
+        "label": "Chassis No",
+        "key": "chassis",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 1
+      },
+      {
+        "id": "s_motor",
+        "label": "Motor No",
+        "key": "motor",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 2
+      },
+      {
+        "id": "s_battery",
+        "label": "Battery No",
+        "key": "battery",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 3
+      },
+      {
+        "id": "s_charger",
+        "label": "Charger No",
+        "key": "charger",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 4
+      },
+      {
+        "id": "s_hsn",
+        "label": "HSN Code",
+        "key": "hsn",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 5
+      }
+    ],
+    "sales": [
+      {
+        "id": "sl_custname",
+        "label": "Buyer Name",
+        "key": "custName",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 0
+      },
+      {
+        "id": "sl_phone",
+        "label": "Mobile Number",
+        "key": "phone",
+        "type": "text",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 1
+      },
+      {
+        "id": "sl_gstin",
+        "label": "GSTIN",
+        "key": "gstin",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 2
+      },
+      {
+        "id": "sl_address",
+        "label": "Address",
+        "key": "address",
+        "type": "textarea",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 3
+      },
+      {
+        "id": "sl_date",
+        "label": "Invoice Date",
+        "key": "date",
+        "type": "date",
+        "required": true,
+        "visible": true,
+        "builtin": true,
+        "order": 4
+      },
+      {
+        "id": "sl_model",
+        "label": "Vehicle Model",
+        "key": "model",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 5
+      },
+      {
+        "id": "sl_chassis",
+        "label": "Chassis No",
+        "key": "chassis",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 6
+      },
+      {
+        "id": "sl_motor",
+        "label": "Motor No",
+        "key": "motor",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 7
+      },
+      {
+        "id": "sl_battery",
+        "label": "Battery No",
+        "key": "battery",
+        "type": "text",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 8
+      },
+      {
+        "id": "sl_amount",
+        "label": "Sale Amount",
+        "key": "amount",
+        "type": "number",
+        "required": false,
+        "visible": true,
+        "builtin": true,
+        "order": 9
+      }
+    ]
+  },
+  "statusOverrides": {
+    "adms202507f3716": "STOCK",
+    "adms202507f3755": "STOCK",
+    "adms202507f3674": "STOCK"
+  },
+  "quotationModels": []
+}
